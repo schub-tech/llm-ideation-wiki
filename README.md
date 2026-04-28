@@ -2,7 +2,7 @@
 
 > Built by [**Schub**](https://www.schub.tech/).
 
-Obsidian-friendly research wiki for business ideas, maintained by an LLM. Built on Andrej Karpathy's [LLM Wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).
+A workspace for taking business ideas from half-formed hunch to a defended verdict. You feed it brainstorms, interviews, and research; an LLM builds a structured case for each idea, surfaces what still needs validating, and stress-tests the thesis as new evidence comes in.
 
 ## Quick Start
 
@@ -16,7 +16,7 @@ Obsidian-friendly research wiki for business ideas, maintained by an LLM. Built 
 6. **Add new material** (user interviews, external sources, articles) to `raw/notes/` as you collect it, and ask the LLM to ingest it.
 7. **Ask questions** any time — the LLM reads `wiki/index.md` first and works down from there.
 
-The wiki is meant to be living: each new piece of evidence either confirms a load-bearing claim, kills one, or sharpens the open questions. The `verdict` field on each idea (`exploring` → `pursuing` / `parked` / `killed`) tracks where it actually stands. Run `python3 scripts/rebuild_index.py` after meaningful wiki edits.
+The wiki is meant to be living: each new piece of evidence either confirms a load-bearing claim, kills one, or sharpens the open questions. The `verdict` field on each idea (`exploring` → `pursuing` / `parked` / `killed`) tracks where it actually stands.
 
 ## Structure
 
@@ -41,10 +41,11 @@ Skills live in `.claude/skills/` and are picked up automatically by Claude Code.
 - `find_orphans.py` — lists wiki pages with no inbound links.
 - `check_wikilinks.py` — lists broken markdown links.
 
-## Setup
+## Notes
 
-- **Markdown viewer:** [Obsidian](https://obsidian.md/) is recommended as a lightweight viewer for browsing the wiki and following wikilinks.
+- **Viewer:** the wiki uses Obsidian-friendly conventions (frontmatter and wikilinks), so any markdown viewer works — [Obsidian](https://obsidian.md/) just makes browsing and following links nicer.
 - **LLM tool:** any agent that can read and edit local files works, but the Claude family is recommended for its conversational style.
+- Highly inspired by Andrej Karpathy's [LLM Wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).
 
 ---
 
