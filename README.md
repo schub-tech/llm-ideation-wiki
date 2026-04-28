@@ -23,7 +23,7 @@ The wiki is meant to be living: each new piece of evidence either confirms a loa
 - `raw/` — immutable source material (notes, brainstorms, attachments).
 - `wiki/` — compiled markdown wiki the LLM maintains.
 - `templates/` — scaffold for new idea pages.
-- `skills/` — LLM skills you can invoke (see [Skills](#skills) below).
+- `.claude/skills/` — LLM skills you can invoke (see [Skills](#skills) below).
 - `scripts/` — index and lint helpers.
 - `AGENTS.md` — operating rules for the LLM.
 
@@ -32,6 +32,8 @@ The wiki is meant to be living: each new piece of evidence either confirms a loa
 - `/grill-me` — interviews you about an idea one question at a time, walking through the overview's sections (Problem → Solution → Why this works → Market → Risks).
 - `/research` — surfaces research gaps from an idea overview ("Still to validate" lines, "What we do not know," "Next moves") and proposes a plan tagged by strategy: ask the user, web research, or hybrid.
 - `/research-deep` — runs targeted web research on specific questions and writes findings to `raw/notes/` for ingest.
+
+Skills live in `.claude/skills/` and are picked up automatically by Claude Code. If you're using a different agent, point it at the `.claude/skills/` directory and ask it to load the relevant `SKILL.md` for the workflow you want.
 
 ## Scripts
 
