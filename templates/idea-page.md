@@ -1,6 +1,6 @@
 # Idea Page Template
 
-Scaffold for `wiki/ideas/<idea>/overview.md`. The shape is adapted from the [schub](https://www.schub.tech/) seed pitch deck — each section has a slide-ready lead paragraph followed by a `#### Details` block holding the supporting evidence and open questions. A reader scanning only the section leads should get the picture.
+Scaffold for `wiki/ideas/<idea>/overview.md`. The shape is adapted from the schub day format — each section has a slide-ready lead paragraph followed by a `#### Details` block holding the supporting evidence and open questions. A reader scanning only the section leads should get the picture.
 
 ## Rules
 
