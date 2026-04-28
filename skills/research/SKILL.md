@@ -24,6 +24,6 @@ Convert the wiki's existing open questions into a concrete research plan. Don't 
 
 **Hand off.** For web items, invoke `/research-deep` with the confirmed questions. For user-question items, surface them inline one at a time and capture the answers — short answers go directly into the relevant `Still to validate` line in the wiki overview; longer answers may warrant a new raw idea note in `raw/ideas/`.
 
-Apply the AGENTS.md principles: tie every proposed question to a specific wiki claim it would confirm or kill ("this would test the 60%-selector-drift bank-case figure"); don't propose research the user could answer in two minutes; default to skepticism — if a "Still to validate" line is hedging vague concerns, sharpen the question before researching it; be direct about which questions are decoration vs. which would actually move the verdict.
+Tie every proposed question to a specific wiki claim it would confirm or kill (e.g. "this would test the 60%-selector-drift bank-case figure"). Don't propose research the user could answer in two minutes. If a "Still to validate" line hedges, sharpen the question before researching it.
 
 The goal is to convert the wiki's open-question inventory into a small, ordered, actionable research plan — not a wishlist.

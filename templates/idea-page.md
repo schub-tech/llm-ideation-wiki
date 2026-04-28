@@ -106,7 +106,7 @@ What makes the founder(s) particularly well suited — domain expertise, technic
 **Still to validate:**
 Which gaps the founder already closes vs. which must be hired or partnered for.
 
-## Risks to the thesis
+## Risks
 
 The three-to-five things most likely to kill the idea. For each, name the disconfirming signal and link to the supporting deep-dive page.
 
