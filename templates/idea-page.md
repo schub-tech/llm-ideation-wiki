@@ -20,7 +20,7 @@ updated: "YYYY-MM-DD"
 
 # Idea Title
 
-One-sentence reframing of the idea. Verdict: `exploring|pursuing|parked|killed` — and the one sentence that says what would flip the verdict.
+One-sentence reframing of the idea — what it actually is, in plain language.
 
 ## Problem
 
@@ -116,8 +116,6 @@ The three-to-five things most likely to kill the idea. For each, name the discon
 ## Next moves
 
 The gating sentence — which move blocks everything else right now. In research mode this is usually a validation step; once validated, it becomes the build ask (capital, hires, partnerships, and what each unlocks).
-
-#### Details
 
 **To validate:** numbered list of concrete research or customer-discovery actions. Order matters — name which moves gate the others.
 
