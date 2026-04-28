@@ -1,5 +1,7 @@
 # LLM Ideation Wiki
 
+> Built by [**Schub**](https://www.schub.tech/).
+
 Obsidian-friendly research wiki for business ideas, maintained by an LLM. Built on Andrej Karpathy's [LLM Wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).
 
 ## Quick Start
@@ -37,6 +39,11 @@ The wiki is meant to be living: each new piece of evidence either confirms a loa
 - `find_orphans.py` — lists wiki pages with no inbound links.
 - `check_wikilinks.py` — lists broken markdown links.
 
+## Setup
+
+- **Markdown viewer:** [Obsidian](https://obsidian.md/) is recommended as a lightweight viewer for browsing the wiki and following wikilinks.
+- **LLM tool:** any agent that can read and edit local files works, but the Claude family is recommended for its conversational style.
+
 ---
 
-> Note: Claude Code is the recommended LLM tool for working with this repo.
+Made with ♥ in Munich by [**Schub**](https://www.schub.tech/). Forks, issues, and pull requests welcome.
