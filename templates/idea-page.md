@@ -60,7 +60,7 @@ What primary signal would move this off zero.
 
 ## Why this works
 
-The insight + timing argument in one sentence. Fold the timing pressure (commoditization clock, dated triggers, regulatory deadlines) into the same section so the reader sees insight and "why now" together.
+The insight + timing argument in one sentence. Fold the timing pressure (commoditization clock, dated triggers, regulatory deadlines) into the same section so the reader sees insight and "why now" together. Mark synthesis that combines multiple sources with `^[inferred]`.
 
 #### Details
 
@@ -112,6 +112,12 @@ The three-to-five things most likely to kill the idea. For each, name the discon
 
 - **Risk 1.** One-sentence framing. → see [supporting-page.md](./supporting-page.md).
 - **Risk 2.** ...
+
+Use provenance markers where the evidence is not direct:
+
+- `^[inferred]` for synthesis or implications.
+- `^[ambiguous]` for contested, weak, or methodology-limited claims.
+- `^[user-claim]` for founder/user assertions that still need outside validation.
 
 ## Next moves
 

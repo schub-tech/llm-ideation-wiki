@@ -13,9 +13,14 @@ LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+\.md)\)")
 
 
 def wiki_pages() -> list[Path]:
-    return sorted(
-        path for path in WIKI.rglob("*.md") if path.name not in SKIP
-    )
+    pages: list[Path] = []
+    for path in sorted(WIKI.rglob("*.md")):
+        if path.name in SKIP:
+            continue
+        if not path.read_text(encoding="utf-8").startswith("---\n"):
+            continue
+        pages.append(path)
+    return pages
 
 
 def resolve_link(source: Path, target: str) -> Path | None:
@@ -44,4 +49,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

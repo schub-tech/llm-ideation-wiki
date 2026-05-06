@@ -22,24 +22,31 @@ The wiki is meant to be living: each new piece of evidence either confirms a loa
 
 - `raw/` — immutable source material (notes, brainstorms, attachments).
 - `wiki/` — compiled markdown wiki the LLM maintains.
+- `purpose.md` — decision criteria and current portfolio context for the LLM.
+- `hot.md` — short recent-state cache for fast session startup.
+- `.manifest.json` — source hash ledger for ingest tracking and delta checks.
 - `templates/` — scaffold for new idea pages.
-- `.claude/skills/` — LLM skills you can invoke (see [Skills](#skills) below).
+- `docs/agent/` — progressively disclosed schema, provenance, and workflow guidance for agents.
+- `.agents/skills/` and `.claude/skills/` — LLM skills you can invoke (see [Skills](#skills) below).
 - `scripts/` — index and lint helpers.
-- `AGENTS.md` — operating rules for the LLM.
+- `AGENTS.md` — lean always-loaded operating rules; deeper instructions live in `docs/agent/` and skills.
 
 ## Skills
 
 - `/grill-me` — interviews you about an idea one question at a time, walking through the overview's sections (Problem → Solution → Why this works → Market → Risks).
 - `/research` — surfaces research gaps from an idea overview ("Still to validate" lines, "What we do not know," "Next moves") and proposes a plan tagged by strategy: ask the user, web research, or hybrid.
 - `/research-deep` — runs targeted web research on specific questions and writes findings to `raw/notes/` for ingest.
+- `/wiki-lint` — semantic lint workflow for unsupported claims, unmarked synthesis, stale validations, provenance drift, and risk/verdict mismatch.
 
-Skills live in `.claude/skills/` and are picked up automatically by Claude Code. If you're using a different agent, point it at the `.claude/skills/` directory and ask it to load the relevant `SKILL.md` for the workflow you want.
+Skills live in `.agents/skills/` and `.claude/skills/`. Claude Code picks up `.claude/skills/`; other agents can read the matching `SKILL.md` files from `.agents/skills/`.
 
 ## Scripts
 
 - `rebuild_index.py` — regenerates `wiki/index.md` from page frontmatter.
 - `find_orphans.py` — lists wiki pages with no inbound links.
 - `check_wikilinks.py` — lists broken markdown links.
+- `wiki_status.py` — compares `raw/` against `.manifest.json` and reports new, modified, deleted, or unlinked sources.
+- `update_manifest.py` — refreshes `.manifest.json` from raw source hashes and wiki `source_files` frontmatter after an ingest.
 
 ## Notes
 
