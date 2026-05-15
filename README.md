@@ -25,7 +25,9 @@ The agent will ask you for two things:
 - the Notion page link that should be the root
 - your first idea, in a few sentences
 
-Then it will create the Notion structure, add the first raw note, and start the first idea page.
+During setup, it will also check whether the Notion CLI is installed and whether you are logged in. If needed, it can install the CLI, run `ntn login`, and open the browser for you to approve access.
+
+After that, it will create the Notion structure, add the first raw note, and start the first idea page.
 
 ## How It Works
 
@@ -52,6 +54,7 @@ These are mainly for the agent, but they are helpful to know:
 
 ```bash
 ntn doctor
+ntn login
 scripts/notion_wiki.py seed --refresh-existing
 scripts/notion_wiki.py ls
 scripts/notion_wiki.py pull-cache
