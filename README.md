@@ -59,7 +59,7 @@ Notion is the place to read and edit user-facing content. Local Markdown files a
 - `/grill-me` — interviews you to stress-test an idea.
 - `/wiki-lint` — checks for weak claims, missing evidence, stale assumptions, and unclear verdicts.
 
-Skills live in `.agents/skills/` and `.claude/skills/`.
+Skills live in `.agents/skills/`. `CLAUDE.md` and the `.claude/skills/*/SKILL.md` files are compatibility symlinks for Claude-style agents.
 
 ## Useful Agent Commands
 

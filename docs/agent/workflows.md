@@ -41,6 +41,7 @@ Use deterministic checks that understand the Notion mapping:
 ```bash
 python3 -m json.tool notion.config.json >/dev/null
 python3 -m py_compile scripts/notion_wiki.py
+scripts/check_agent_symlinks.py
 scripts/notion_wiki.py pull-cache
 scripts/notion_wiki.py hash
 ```

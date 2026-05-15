@@ -35,4 +35,4 @@ LLM-maintained business-idea research wiki. Keep it lean, skeptical, and evidenc
 - Ingest, answer, sync, and maintenance workflows: [docs/agent/workflows.md](./docs/agent/workflows.md).
 - New idea scaffold: [templates/idea-page.md](./templates/idea-page.md).
 - Buyer/user interview cheat-sheet (Mom Test): [docs/mom-test-cheatsheet.md](./docs/mom-test-cheatsheet.md).
-- Skills: `/onboarding`, `/founder-profile`, `/new-idea`, `/research`, `/research-deep`, `/grill-me`, and `/wiki-lint` live in `.agents/skills/` and `.claude/skills/`.
+- Skills: `/onboarding`, `/founder-profile`, `/new-idea`, `/research`, `/research-deep`, `/grill-me`, and `/wiki-lint` live in `.agents/skills/`. `CLAUDE.md` and the `.claude/skills/*/SKILL.md` files are compatibility symlinks to the canonical agent files.
