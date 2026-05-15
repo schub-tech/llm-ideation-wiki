@@ -1,6 +1,6 @@
 # Notion Wiki Contract
 
-Use this when the wiki is operating from a Notion root page instead of local Markdown files.
+Use this for all raw-source and user-facing wiki content work.
 
 ## Canonical Store
 

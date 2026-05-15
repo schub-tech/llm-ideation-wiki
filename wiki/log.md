@@ -8,3 +8,4 @@
 - 2026-05-15 — Simplified Notion content structure to idea-first pages: `raw/<idea-slug>/`, `raw/shared/`, and `wiki/<idea-slug>/`.
 - 2026-05-15 — Cleaned Notion page titles/body headings to human names (`raw`, `shared`, `wiki`) while keeping path keys in the harness config.
 - 2026-05-15 — Removed duplicated title headings from Notion container page bodies; page titles now live only in Notion's title field.
+- 2026-05-15 — Removed dual-mode/file-based wording from agent instructions and refreshed workflow/contract docs for Notion-only content storage.

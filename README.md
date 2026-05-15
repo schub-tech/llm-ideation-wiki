@@ -8,8 +8,8 @@ A workspace for taking business ideas from half-formed hunch to a defended verdi
 
 1. **Fork this repo** (recommended — gives you your own working copy to evolve) or clone it directly to try it out.
 2. **Clone locally:** `git clone <your-fork-url>`
-3. **Drop a starting point** into `raw/<idea-slug>/` — a brainstorm, scratch note, or a few paragraphs explaining what you want to research.
-4. **Open the repo with your AI agent** (Claude Code recommended — see note at the bottom). Ask it to scaffold an idea overview from your starting note using `templates/idea-page.md`. It will fill what your note supports and leave honest gaps everywhere else.
+3. **Add a starting point** under Notion `raw/<idea-slug>/` — a brainstorm, scratch note, or a few paragraphs explaining what you want to research.
+4. **Open the repo with your AI agent.** Ask it to scaffold a Notion `wiki/<idea-slug>/` page from your starting note using `templates/idea-page.md`. It will fill what your note supports and leave honest gaps everywhere else.
 5. **Use the skills** (see [Skills](#skills) below) to grow the wiki:
    - `/research` to surface unvalidated gaps; `/research-deep` to fill them with web research that lands as new raw notes.
    - `/grill-me` to stress-test the idea section by section once the overview has substance.
@@ -20,20 +20,22 @@ The wiki is meant to be living: each new piece of evidence either confirms a loa
 
 ## Structure
 
-- `raw/` — immutable source material (notes, brainstorms, attachments).
-- `wiki/` — compiled markdown wiki the LLM maintains.
+- Notion `raw/` — immutable source material (notes, brainstorms, attachments).
+- Notion `wiki/` — user-facing compiled wiki the LLM maintains.
 - `purpose.md` — decision criteria and current portfolio context for the LLM.
 - `hot.md` — short recent-state cache for fast session startup.
-- `.manifest.json` — source hash ledger for ingest tracking and delta checks.
+- `wiki/index.md` — local navigation for idea pages.
+- `wiki/log.md` — local append-only change log.
+- `notion.config.json` — Notion root and logical path mapping.
 - `templates/` — scaffold for new idea pages.
 - `docs/agent/` — progressively disclosed schema, provenance, and workflow guidance for agents.
 - `.agents/skills/` and `.claude/skills/` — LLM skills you can invoke (see [Skills](#skills) below).
 - `scripts/` — index and lint helpers.
 - `AGENTS.md` — lean always-loaded operating rules; deeper instructions live in `docs/agent/` and skills.
 
-## Notion-Backed Mode
+## Notion Content Store
 
-This repo can also run with Notion as the canonical content store for user-facing `wiki/<idea-slug>/` pages and `raw/<idea-slug>/` source material. In that mode, local Markdown files such as `purpose.md`, `hot.md`, `wiki/index.md`, `wiki/log.md`, `templates/`, and `docs/` remain the agent harness; durable content reads and writes go through the Notion CLI.
+Notion is the canonical content store for user-facing `wiki/<idea-slug>/` pages and `raw/<idea-slug>/` source material. Local Markdown files such as `purpose.md`, `hot.md`, `wiki/index.md`, `wiki/log.md`, `templates/`, and `docs/` are the agent harness; durable content reads and writes go through the Notion CLI.
 
 ```bash
 ntn doctor
@@ -59,16 +61,16 @@ Skills live in `.agents/skills/` and `.claude/skills/`. Claude Code picks up `.c
 
 ## Scripts
 
-- `rebuild_index.py` — regenerates `wiki/index.md` from page frontmatter.
-- `find_orphans.py` — lists wiki pages with no inbound links.
-- `check_wikilinks.py` — lists broken markdown links.
-- `wiki_status.py` — compares `raw/` against `.manifest.json` and reports new, modified, deleted, or unlinked sources.
-- `update_manifest.py` — refreshes `.manifest.json` from raw source hashes and wiki `source_files` frontmatter after an ingest.
+- `notion_wiki.py get <path>` — print Markdown for a mapped Notion content page.
+- `notion_wiki.py update <path> <file>` — replace a mapped Notion content page from Markdown.
+- `notion_wiki.py seed` — ensure standard Notion content containers exist and have expected titles/icons.
+- `notion_wiki.py pull-cache` — refresh generated Markdown cache under `.cache/notion/`.
+- `notion_wiki.py hash` — calculate Notion content hashes for mapped pages.
 
 ## Notes
 
-- **Viewer:** the wiki uses Obsidian-friendly conventions (frontmatter and wikilinks), so any markdown viewer works — [Obsidian](https://obsidian.md/) just makes browsing and following links nicer.
-- **LLM tool:** any agent that can read and edit local files works, but the Claude family is recommended for its conversational style.
+- **Viewer:** Notion is the user-facing content browser; generated local cache is only for agent search and verification.
+- **LLM tool:** use an agent that can run the Notion CLI and edit the local harness files.
 - Highly inspired by Andrej Karpathy's [LLM Wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).
 
 ---
