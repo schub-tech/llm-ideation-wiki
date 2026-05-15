@@ -54,7 +54,7 @@ Notion is the place to read and edit user-facing content. Local Markdown files a
 - `/onboarding` — connects a Notion root page and creates the empty structure.
 - `/founder-profile` — captures the founder ambition and constraints every idea should be judged against.
 - `/new-idea` — creates a raw note, idea workspace, and overview for one idea.
-- `/research` — finds the most important open questions for an idea.
+- `/find-gaps` — finds the most important open questions for an idea.
 - `/research-deep` — researches a specific question and writes the result as raw material.
 - `/grill-me` — interviews you to stress-test an idea.
 - `/wiki-lint` — checks for weak claims, missing evidence, stale assumptions, and unclear verdicts.

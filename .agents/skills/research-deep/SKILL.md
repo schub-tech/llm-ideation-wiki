@@ -1,11 +1,11 @@
 ---
 name: research-deep
-description: Execute web research on specific questions and write findings to Notion `raw/<idea-slug>/` or `raw/shared/` as new raw source pages. Use after `/research` produces a confirmed plan, or when the user gives a direct research question (e.g. "research X" / "find me data on Y" / "look up Z").
+description: Execute web research on specific questions and write findings to Notion `raw/<idea-slug>/` or `raw/shared/` as new raw source pages. Use after `/find-gaps` produces a confirmed plan, or when the user gives a direct research question (e.g. "research X" / "find me data on Y" / "look up Z").
 ---
 
 Run targeted web research on one or more research questions and produce raw notes, then propose distilling them into the wiki via `docs/agent/workflows.md`. Maintaining the wiki is the LLM's job, not the user's — don't leave the raw notes sitting unintegrated.
 
-**Identify the question.** From a `/research` plan or a direct user prompt. If vague, narrow it before searching ("research the market" → "What 2024-2025 sources support or contradict the TAM figure cited in the overview's Market section?"). Read the relevant Notion `raw/<idea-slug>/` page and `raw/shared/` first to avoid retreading ground — if a recent note already covers the question, say so and ask the user whether to skip, supplement, or refresh.
+**Identify the question.** From a `/find-gaps` plan or a direct user prompt. If vague, narrow it before searching ("research the market" → "What 2024-2025 sources support or contradict the TAM figure cited in the overview's Market section?"). Read the relevant Notion `raw/<idea-slug>/` page and `raw/shared/` first to avoid retreading ground — if a recent note already covers the question, say so and ask the user whether to skip, supplement, or refresh.
 
 **Plan and execute searches.** Draft 2-4 targeted queries per question and run them. Read the most relevant sources end-to-end, not just snippets — snippets lose date and context. For multiple research questions in one session, consider launching one sub-agent per question so they run concurrently; each sub-agent owns its question end-to-end (queries, source reading, raw-note write) and returns when done. The parent agent then compiles the report-back.
 
