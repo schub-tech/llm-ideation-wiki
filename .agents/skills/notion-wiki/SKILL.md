@@ -30,7 +30,8 @@ Use Notion as the canonical store for raw material and user-facing wiki content.
 
 - Create idea-specific source pages under `raw/<idea-slug>/`.
 - Create cross-idea source pages under `raw/shared/`.
-- Create idea synthesis pages under `wiki/<idea-slug>/`.
+- Create idea workspace containers under `wiki/<idea-slug>/`.
+- Create current idea synthesis pages under `wiki/<idea-slug>/overview`.
 - Prefer extending `scripts/notion_wiki.py` or using raw `ntn api /v1/pages` for new content paths.
 - If creating manually, create the Notion page via `ntn api /v1/pages` so the title property is set, then update Markdown content with `ntn pages update`.
 - Set an emoji icon on every Notion content page.

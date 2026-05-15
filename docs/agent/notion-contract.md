@@ -13,17 +13,18 @@ Use this for all raw-source and user-facing wiki content work.
 
 The Notion root page should mirror the content tree with clean human page titles:
 
-- `🧠 LLM-Wiki`
-- `🧾 raw`
-- `🔗 shared` under `raw`
-- `<idea-slug>` under `raw`
-- `📚 wiki`
-- `<idea-slug>` under `wiki`
-- `🧰 templates`
-- `🧩 Idea Page` under `templates`
-- `🎙️ Buyer Interview Protocol` under `templates`
+- `🧠 LLM Wiki`
+- `🧾 Raw`
+- `🔗 Shared` under `Raw`
+- `<Idea Title>` under `Raw`
+- `📚 Wiki`
+- `<Idea Title>` under `Wiki`
+- `🧰 Templates`
+- `🧩 Idea Page` under `Templates`
+- `🎙️ Buyer Interview Protocol` under `Templates`
 
 Use path-like keys only inside `notion.config.json` and scripts, e.g. `raw/shared/` and `wiki/<idea-slug>/`.
+Notion page titles should be Title Case human names, never slug-style names such as `bagel-shop-munich`.
 
 Templates are mirrored into Notion for browsing/copying, but the local `templates/` files remain the harness source of truth.
 
@@ -35,14 +36,18 @@ Default scaffold pages should open with one short task-focused sentence that exp
 
 - Put idea-specific source material under `raw/<idea-slug>/`.
 - Put sources that apply to multiple ideas under `raw/shared/`.
-- Put LLM-maintained synthesis under `wiki/<idea-slug>/`.
+- Use `wiki/<idea-slug>/` as the idea workspace container.
+- Put the current LLM-maintained synthesis under `wiki/<idea-slug>/overview`.
+- Put focused deep dives as additional child pages under `wiki/<idea-slug>/`.
 - Keep raw pages immutable after ingest; update wiki pages instead.
 
 ## CLI Rules
 
 - Read local harness context first: `hot.md`, `AGENTS.md`, and relevant files under `docs/agent/`.
 - Use `scripts/notion_wiki.py get <path>` to read a known page.
+- Use `scripts/notion_wiki.py create <path> --parent <parent-path> --title <title> --emoji <emoji>` to create and map a new page.
 - Use `scripts/notion_wiki.py update <path> <file>` to replace a known page with Markdown.
+- Use `scripts/notion_wiki.py toggle-details <path>` if an overview/template page has plain `Details` H4 blocks instead of toggleable ones.
 - Use `scripts/notion_wiki.py pull-cache` to refresh generated local cache for grep and lint.
 - Use `scripts/notion_wiki.py hash` to calculate Notion-page content hashes.
 - Use raw `ntn` only when the helper script does not expose the needed operation.

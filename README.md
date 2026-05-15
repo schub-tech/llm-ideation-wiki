@@ -9,7 +9,7 @@ A workspace for taking business ideas from half-formed hunch to a defended verdi
 1. **Fork this repo** (recommended — gives you your own working copy to evolve) or clone it directly to try it out.
 2. **Clone locally:** `git clone <your-fork-url>`
 3. **Add a starting point** under Notion `raw/<idea-slug>/` — a brainstorm, scratch note, or a few paragraphs explaining what you want to research.
-4. **Open the repo with your AI agent.** Ask it to scaffold a Notion `wiki/<idea-slug>/` page from your starting note using `templates/idea-page.md`. It will fill what your note supports and leave honest gaps everywhere else.
+4. **Open the repo with your AI agent.** Ask it to scaffold a Notion `wiki/<idea-slug>/overview` page from your starting note using `templates/idea-page.md`. It will fill what your note supports and leave honest gaps everywhere else.
 5. **Use the skills** (see [Skills](#skills) below) to grow the wiki:
    - `/research` to surface unvalidated gaps; `/research-deep` to fill them with web research that lands as new raw notes.
    - `/grill-me` to stress-test the idea section by section once the overview has substance.
@@ -34,7 +34,7 @@ The wiki is meant to be living: each new piece of evidence either confirms a loa
 
 ## Notion Content Store
 
-Notion is the canonical content store for user-facing `wiki/<idea-slug>/` pages and `raw/<idea-slug>/` source material. Local Markdown files such as `hot.md`, `wiki/index.md`, `wiki/log.md`, `templates/`, and `docs/` are the agent harness; durable content reads and writes go through the Notion CLI.
+Notion is the canonical content store for user-facing `wiki/<idea-slug>/overview` pages, supporting `wiki/<idea-slug>/` child pages, and `raw/<idea-slug>/` source material. Local Markdown files such as `hot.md`, `wiki/index.md`, `wiki/log.md`, `templates/`, and `docs/` are the agent harness; durable content reads and writes go through the Notion CLI.
 
 ```bash
 ntn doctor

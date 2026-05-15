@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import hashlib
 import json
 import re
@@ -41,22 +42,22 @@ PAGE_ICONS = {
 }
 
 PAGE_TITLES = {
-    "raw/": "raw",
-    "raw/shared/": "shared",
-    "wiki/": "wiki",
-    "templates/": "templates",
+    "raw/": "Raw",
+    "raw/shared/": "Shared",
+    "wiki/": "Wiki",
+    "templates/": "Templates",
     "templates/idea-page": "Idea Page",
     "templates/buyer-interview-protocol": "Buyer Interview Protocol",
 }
 
-ROOT_DESCRIPTION = "Start here: raw holds source inputs, wiki holds current syntheses, and templates holds reusable scaffolds."
+ROOT_DESCRIPTION = "Start here: Raw holds source inputs, Wiki holds current syntheses, and Templates holds reusable scaffolds."
 
 DEFAULT_DESCRIPTIONS = {
-    "raw/": "Source material starts here. Use shared for reusable inputs and idea pages for idea-specific notes.",
+    "raw/": "Source material starts here. Use Shared for reusable inputs and idea pages for idea-specific notes.",
     "raw/shared/": "Reusable source notes live here: market facts, methods, vocabulary, and references that support multiple ideas.",
     "wiki/": "Current idea syntheses live here. Create one page per idea slug and keep claims tied back to raw evidence.",
     "templates/": "Copy these scaffolds when starting an idea page or interview workflow.",
-    "templates/idea-page": "Copy this scaffold into a wiki idea page, replace placeholders with evidence-backed bullets, and leave gaps explicit.",
+    "templates/idea-page": "Copy this scaffold into an idea Overview page, replace placeholders with evidence-backed bullets, and leave gaps explicit.",
     "templates/buyer-interview-protocol": "Copy this as a wiki child page when buyer interviews are the next validation step.",
 }
 
@@ -107,7 +108,8 @@ def page_icon(path: str) -> str:
 def page_title(path: str) -> str:
     if path in PAGE_TITLES:
         return PAGE_TITLES[path]
-    return path.rstrip("/").split("/")[-1] or path
+    name = path.rstrip("/").split("/")[-1] or path
+    return " ".join(part.capitalize() for part in re.split(r"[-_]+", name) if part)
 
 
 def cache_path(path: str) -> Path:
@@ -224,6 +226,35 @@ def set_paragraph_text(block_id: str, text: str) -> None:
     )
 
 
+def set_heading_4_toggle(block: dict[str, Any]) -> None:
+    block_id = str(block["id"])
+    heading = copy.deepcopy(block.get("heading_4", {}))
+    heading["is_toggleable"] = True
+    run_ntn(
+        [
+            "api",
+            f"/v1/blocks/{compact_id(block_id)}",
+            "-X",
+            "PATCH",
+            f"heading_4:={json.dumps(heading, ensure_ascii=False)}",
+        ]
+    )
+
+
+def append_block_children(block_id: str, children: list[dict[str, Any]]) -> None:
+    if not children:
+        return
+    run_ntn(
+        [
+            "api",
+            f"/v1/blocks/{compact_id(block_id)}/children",
+            "-X",
+            "PATCH",
+            f"children:={json.dumps(children, ensure_ascii=False)}",
+        ]
+    )
+
+
 def delete_block(block_id: str) -> None:
     run_ntn(["api", f"/v1/blocks/{compact_id(block_id)}", "-X", "DELETE"])
 
@@ -246,6 +277,62 @@ def cleanup_legacy_seed_blocks(blocks: list[dict[str, Any]], first_paragraph_id:
             delete_block(block_id)
         elif block_plain_text(block).strip() == "Canonical content lives in child pages.":
             delete_block(block_id)
+
+
+def appendable_block(block: dict[str, Any]) -> dict[str, Any]:
+    block_type = str(block["type"])
+    content = copy.deepcopy(block.get(block_type, {}))
+    content.pop("children", None)
+    return {"object": "block", "type": block_type, block_type: strip_nulls(content)}
+
+
+def strip_nulls(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {key: strip_nulls(item) for key, item in value.items() if item is not None}
+    if isinstance(value, list):
+        return [strip_nulls(item) for item in value]
+    return value
+
+
+def should_toggle_details(path: str) -> bool:
+    return path == "templates/idea-page" or "/overview" in path
+
+
+def toggle_details_sections(page_id_value: str) -> int:
+    blocks = get_page_blocks(page_id_value)
+    moved = 0
+    skip: set[str] = set()
+
+    for index, block in enumerate(blocks):
+        block_id = str(block.get("id", ""))
+        if not block_id or block_id in skip:
+            continue
+        if block.get("type") != "heading_4" or block_plain_text(block).strip() != "Details":
+            continue
+
+        set_heading_4_toggle(block)
+        if block.get("has_children"):
+            continue
+
+        nested: list[dict[str, Any]] = []
+        delete_ids: list[str] = []
+        for child in blocks[index + 1 :]:
+            child_type = child.get("type")
+            if child_type == "heading_2":
+                break
+            child_id = str(child.get("id", ""))
+            if not child_id or child_id in skip:
+                continue
+            nested.append(appendable_block(child))
+            delete_ids.append(child_id)
+
+        append_block_children(block_id, nested)
+        for child_id in delete_ids:
+            delete_block(child_id)
+            skip.add(child_id)
+        moved += len(delete_ids)
+
+    return moved
 
 
 def refresh_description(page_id_value: str, description: str) -> bool:
@@ -291,6 +378,7 @@ def ensure_page(config: dict[str, Any], path: str, parent_path: str) -> bool:
 def ensure_root(config: dict[str, Any]) -> None:
     root_icon = str(config.get("root_emoji", "🧠"))
     set_page_icon(str(config["root_page_id"]), root_icon)
+    set_page_title(str(config["root_page_id"]), str(config.get("root_title", "LLM Wiki")))
 
 
 def cmd_seed(args: argparse.Namespace) -> None:
@@ -309,6 +397,8 @@ def cmd_seed(args: argparse.Namespace) -> None:
         elif args.refresh_existing:
             if path in LOCAL_CONTENT:
                 update_page_markdown(page_id(config, path), default_content(path))
+                if should_toggle_details(path):
+                    toggle_details_sections(page_id(config, path))
             else:
                 refresh_description(page_id(config, path), DEFAULT_DESCRIPTIONS[path])
             updated_existing.append(path)
@@ -333,7 +423,52 @@ def cmd_update(args: argparse.Namespace) -> None:
     if not source.is_file():
         raise SystemExit(f"not a file: {source}")
     update_page_markdown(page_id(config, args.path), source.read_text(encoding="utf-8"))
+    if should_toggle_details(args.path):
+        toggle_details_sections(page_id(config, args.path))
     print(f"updated: {args.path}")
+
+
+def cmd_create(args: argparse.Namespace) -> None:
+    config = load_config()
+    pages = config["pages"]
+    title = args.title or page_title(args.path)
+    emoji = args.emoji or page_icon(args.path)
+
+    if args.path in pages and pages[args.path].get("id"):
+        existing_id = page_id(config, args.path)
+        set_page_icon(existing_id, emoji)
+        set_page_title(existing_id, title)
+        pages[args.path].update({"title": title, "parent": args.parent, "emoji": emoji})
+        action = "updated mapping"
+    else:
+        parent_id = config["root_page_id"] if not args.parent else page_id(config, args.parent)
+        page = create_empty_page(parent_id, title)
+        new_id = compact_id(str(page["id"]))
+        set_page_icon(new_id, emoji)
+        pages[args.path] = {
+            "id": new_id,
+            "title": title,
+            "parent": args.parent,
+            "emoji": emoji,
+        }
+        action = "created"
+
+    if args.file:
+        source = Path(args.file)
+        if not source.is_file():
+            raise SystemExit(f"not a file: {source}")
+        update_page_markdown(page_id(config, args.path), source.read_text(encoding="utf-8"))
+        if should_toggle_details(args.path):
+            toggle_details_sections(page_id(config, args.path))
+
+    save_config(config)
+    print(f"{action}: {args.path}")
+
+
+def cmd_toggle_details(args: argparse.Namespace) -> None:
+    config = load_config()
+    moved = toggle_details_sections(page_id(config, args.path))
+    print(f"toggled-details: {args.path} ({moved} nested blocks)")
 
 
 def cmd_pull_cache(_args: argparse.Namespace) -> None:
@@ -381,6 +516,18 @@ def build_parser() -> argparse.ArgumentParser:
     update.add_argument("path")
     update.add_argument("file")
     update.set_defaults(func=cmd_update)
+
+    create = sub.add_parser("create", help="Create or register a Notion wiki page path.")
+    create.add_argument("path")
+    create.add_argument("--parent", default="", help="Known parent path; omit for root child pages.")
+    create.add_argument("--title", help="Human Notion page title.")
+    create.add_argument("--emoji", help="Emoji icon for the Notion page.")
+    create.add_argument("--file", help="Optional Markdown file to write after creating/registering.")
+    create.set_defaults(func=cmd_create)
+
+    toggle_details = sub.add_parser("toggle-details", help="Convert Details H4 blocks to toggle headings for a mapped page.")
+    toggle_details.add_argument("path")
+    toggle_details.set_defaults(func=cmd_toggle_details)
 
     pull = sub.add_parser("pull-cache", help="Refresh generated Markdown cache under .cache/notion/.")
     pull.set_defaults(func=cmd_pull_cache)

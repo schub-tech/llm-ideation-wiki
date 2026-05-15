@@ -4,12 +4,12 @@ Use this when answering wiki questions, ingesting sources, or maintaining the co
 
 ## Ingest A Raw Source
 
-Read local `hot.md`, local `wiki/index.md`, the relevant Notion `wiki/<idea-slug>/` page, and related Notion raw pages first.
+Read local `hot.md`, local `wiki/index.md`, the relevant Notion `wiki/<idea-slug>/overview` page, and related Notion raw pages first.
 
 Work in two phases:
 
 1. Analysis: identify material claims, entities, decisions, contradictions, affected pages, provenance state (`direct`, `inferred`, `ambiguous`, `user-claim`), and open questions before editing.
-2. Write: distill into the relevant Notion `wiki/<idea-slug>/` page and supporting child pages. Merge with existing synthesis instead of appending duplicate summaries. Do not create per-source summary pages.
+2. Write: distill into the relevant Notion `wiki/<idea-slug>/overview` page and supporting child pages. Merge with existing synthesis instead of appending duplicate summaries. Do not create per-source summary pages.
 
 After meaningful edits:
 
@@ -20,7 +20,7 @@ After meaningful edits:
 
 ## Answer A Question
 
-Read local `hot.md` and local `wiki/index.md` first, then the relevant Notion `wiki/<idea-slug>/` page and Notion raw sources. Use `scripts/notion_wiki.py pull-cache` when broad search is cheaper than targeted reads.
+Read local `hot.md` and local `wiki/index.md` first, then the relevant Notion `wiki/<idea-slug>/overview` page and Notion raw sources. Use `scripts/notion_wiki.py pull-cache` when broad search is cheaper than targeted reads.
 
 If the premise is shaky, name it before answering. Cite pages or raw sources relied on. Surface contradictions instead of smoothing them. If the wiki does not answer something, say so. If the answer is durable, update the existing Notion wiki page and refresh local index/log/hot as needed.
 
