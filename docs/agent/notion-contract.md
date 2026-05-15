@@ -19,11 +19,17 @@ The Notion root page should mirror the content tree with clean human page titles
 - `<idea-slug>` under `raw`
 - `📚 wiki`
 - `<idea-slug>` under `wiki`
+- `🧰 templates`
+- `🧩 Idea Page` under `templates`
+- `🎙️ Buyer Interview Protocol` under `templates`
 
 Use path-like keys only inside `notion.config.json` and scripts, e.g. `raw/shared/` and `wiki/<idea-slug>/`.
 
+Templates are mirrored into Notion for browsing/copying, but the local `templates/` files remain the harness source of truth.
+
 Every Notion content page should have an emoji icon. Add the expected icon to `notion.config.json` whenever adding a mapped page.
 Do not repeat the Notion page title as the first heading in the page body; Notion already displays the title.
+Default scaffold pages should open with one short task-focused sentence that explains what belongs there.
 
 ## Idea Layout
 

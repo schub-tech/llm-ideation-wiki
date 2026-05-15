@@ -46,7 +46,7 @@ scripts/notion_wiki.py hash
 
 - `notion.config.json` stores the root page and path-to-page mapping.
 - `scripts/notion_wiki.py seed` creates missing standard content pages without overwriting existing Notion content.
-- `scripts/notion_wiki.py seed --refresh-existing` is reserved for future content templates; it does not overwrite existing pages today.
+- `scripts/notion_wiki.py seed --refresh-existing` refreshes mirrored Notion template pages from local template files.
 - `docs/agent/notion-contract.md` and the `notion-wiki` skill define the agent workflow.
 
 ## Skills

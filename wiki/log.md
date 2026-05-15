@@ -11,3 +11,5 @@
 - 2026-05-15 — Removed dual-mode/file-based wording from agent instructions and refreshed workflow/contract docs for Notion-only content storage.
 - 2026-05-15 — Ported harness simplifications from `llm-knowledge-bases` commit `7b8f13c`: removed `purpose.md` from startup, made verdicts `active|killed`, and refreshed Notion-first skills/docs.
 - 2026-05-15 — Added the missing buyer-interview protocol template from `llm-knowledge-bases`, adapted for Notion child pages.
+- 2026-05-15 — Added Notion `templates` pages for browsing/copying local harness templates.
+- 2026-05-15 — Reworded default Notion scaffold pages with short task-focused descriptions and taught the seed helper to refresh them.

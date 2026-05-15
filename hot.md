@@ -11,6 +11,7 @@ Short recent-state cache for the next agent session. Read before broad repo scan
 
 - Notion content storage was initialized from root page `361bc1d4596980e3ae89f90eb61b0351`.
 - Standard content pages now exist in Notion and are mapped in `notion.config.json`.
+- Default Notion scaffold pages use short task-focused descriptions; refresh them with `scripts/notion_wiki.py seed --refresh-existing`.
 - Harness pages stay local: `hot.md`, `README.md`, `wiki/index.md`, `wiki/log.md`, `docs/`, `templates/`, scripts, and skills are not canonical Notion content.
 - Use `scripts/notion_wiki.py get <path>` for canonical reads and `scripts/notion_wiki.py update <path> <file>` for canonical writes.
 
