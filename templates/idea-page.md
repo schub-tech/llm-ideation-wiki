@@ -7,19 +7,6 @@ Scaffold for Notion `wiki/<idea-slug>/overview`. The shape is adapted from the s
 Copy the block below into Notion `wiki/<idea-slug>/overview`.
 
 ````markdown
----
-title: "Idea Title"
-type: "idea"
-summary: "One-line summary for index generation."
-status: "seed"
-verdict: "active"
-tags: []
-source_files: []
-updated: "YYYY-MM-DD"
----
-
-# Idea Title
-
 One-sentence reframing of the idea — what it actually is, in plain language.
 
 ## Problem

@@ -42,7 +42,11 @@ If a paragraph mixes sourced fact and interpretation, split it so the marker att
 
 Run `/founder-profile` before creating the first idea so idea pages have a founder-level decision frame.
 Use `templates/idea-page.md` as the content scaffold for Notion `wiki/<idea-slug>/overview`. Push detailed evidence into supporting child pages instead of overloading the overview page.
-In overview pages, each `Details` heading should be a toggleable H4 so the section lead stays scannable.
+In overview pages, each `Details` heading should be a toggleable H4 so the section lead stays scannable. `scripts/notion_wiki.py create` and `update` auto-convert `#### Details` blocks into toggleable H4s on `*/overview` and `templates/idea-page` paths — do not write raw Notion toggle syntax in the source Markdown.
+
+## Page Body Format
+
+- Do not include YAML frontmatter in page bodies. Page metadata lives in `notion.config.json` and Notion's page properties — nothing reads a `---` block at the top of the body, and Notion renders it as visible text. The upload script strips a leading frontmatter block as a safety net, but the canonical template and any new authored page should not contain one in the first place.
 
 ## Writing Rules
 

@@ -192,8 +192,18 @@ def set_page_title(page_id_value: str, title: str) -> None:
     )
 
 
+def strip_yaml_frontmatter(markdown: str) -> str:
+    lines = markdown.split("\n")
+    if not lines or lines[0].strip() != "---":
+        return markdown
+    for i in range(1, len(lines)):
+        if lines[i].strip() == "---":
+            return "\n".join(lines[i + 1 :]).lstrip("\n")
+    return markdown
+
+
 def update_page_markdown(page_id_value: str, markdown: str) -> None:
-    run_ntn(["pages", "update", compact_id(page_id_value)], input_text=markdown)
+    run_ntn(["pages", "update", compact_id(page_id_value)], input_text=strip_yaml_frontmatter(markdown))
 
 
 def get_page_markdown(page_id_value: str) -> str:
