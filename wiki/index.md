@@ -10,4 +10,4 @@ Navigation page for Notion-backed wiki content.
 
 ## Idea Pages
 
-- None yet. Create idea synthesis under Notion `wiki/<idea-slug>/` and track it here.
+- None yet. Run `/onboarding` to connect a Notion root and create the first idea.

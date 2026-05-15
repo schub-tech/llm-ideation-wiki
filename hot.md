@@ -1,6 +1,6 @@
 ---
 title: "Hot Cache"
-updated: "2026-05-15"
+updated: ""
 ---
 
 # Hot Cache
@@ -9,18 +9,13 @@ Short recent-state cache for the next agent session. Read before broad repo scan
 
 ## Recent Activity
 
-- Notion content storage was initialized from root page `361bc1d4596980e3ae89f90eb61b0351`.
-- Standard content pages now exist in Notion and are mapped in `notion.config.json`.
-- Default Notion scaffold pages use short task-focused descriptions; refresh them with `scripts/notion_wiki.py seed --refresh-existing`.
-- Harness pages stay local: `hot.md`, `README.md`, `wiki/index.md`, `wiki/log.md`, `docs/`, `templates/`, scripts, and skills are not canonical Notion content.
-- Use `scripts/notion_wiki.py get <path>` for canonical reads and `scripts/notion_wiki.py update <path> <file>` for canonical writes.
+- Fresh distribution copy. No Notion root or idea content is configured yet.
 
 ## Active Threads
 
-- Migration is at content-tree stage: Notion is canonical storage for `raw/<idea-slug>/`, `raw/shared/`, and `wiki/<idea-slug>/`; remaining old file-oriented scripts should be replaced with Notion-native helpers.
+- None.
 
 ## Maintenance State
 
-- No idea content has been added yet.
-- `wiki/index.md` should stay empty of idea pages until the first Notion `wiki/<idea-slug>/` page is created.
+- Run `/onboarding` to connect a Notion root page and create the first idea.
 - Generated cache belongs under `.cache/notion/` and is not durable state.

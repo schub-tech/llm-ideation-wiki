@@ -1,46 +1,9 @@
 {
   "version": 1,
-  "root_page_id": "361bc1d4596980e3ae89f90eb61b0351",
-  "root_url": "https://www.notion.so/LLM-Wiki-361bc1d4596980e3ae89f90eb61b0351",
+  "root_page_id": "",
+  "root_title": "",
+  "root_url": "",
   "root_emoji": "🧠",
   "mode": "notion-cli",
-  "pages": {
-    "raw/": {
-      "id": "361bc1d4596981fdaf9cd75fe0c21666",
-      "title": "raw",
-      "parent": "",
-      "emoji": "🧾"
-    },
-    "wiki/": {
-      "id": "361bc1d4596981ee98cbf6903d5484d4",
-      "title": "wiki",
-      "parent": "",
-      "emoji": "📚"
-    },
-    "raw/shared/": {
-      "id": "361bc1d45969813ba116e527986cce94",
-      "title": "shared",
-      "parent": "raw/",
-      "emoji": "🔗"
-    },
-    "templates/": {
-      "id": "361bc1d4596981af97c8eed9e5fc16fe",
-      "title": "templates",
-      "parent": "",
-      "emoji": "🧰"
-    },
-    "templates/idea-page": {
-      "id": "361bc1d45969811683e4eb88f9065b30",
-      "title": "Idea Page",
-      "parent": "templates/",
-      "emoji": "🧩"
-    },
-    "templates/buyer-interview-protocol": {
-      "id": "361bc1d4596981939c8fd521d4fd22ca",
-      "title": "Buyer Interview Protocol",
-      "parent": "templates/",
-      "emoji": "🎙️"
-    }
-  },
-  "last_seeded": "2026-05-15"
+  "pages": {}
 }

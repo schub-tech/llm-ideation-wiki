@@ -24,7 +24,7 @@ Do not proceed until you have both.
 6. If the environment is headless and `ntn login` prints a URL and poll command, show the URL/code to the user, then run the printed poll command after they approve in the browser.
 7. Re-run `ntn doctor` after login.
 8. Extract the page ID from the Notion URL and store it as the compact ID in `notion.config.json`.
-9. For a new wiki root, reset `pages` in `notion.config.json` before seeding so old demo page IDs are not reused.
+9. For a new wiki root, reset `pages` in `notion.config.json` before seeding so old page IDs are not reused.
 10. Set `mode` to `notion-cli`, keep `version: 1`, and store `root_url`, `root_page_id`, `root_title`, and `root_emoji`.
 11. Run `scripts/notion_wiki.py seed --refresh-existing` to create `Raw`, `Shared`, `Wiki`, and `Templates`.
 
