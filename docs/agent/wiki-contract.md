@@ -11,6 +11,7 @@ Use this when creating or editing wiki pages, source references, provenance mark
   - Notion `raw/shared/` — source material that applies to multiple ideas.
   - Notion `raw/<idea-slug>/` — idea-specific source material.
 - Notion `wiki/` — user-facing compiled layer the LLM maintains.
+  - Notion `wiki/founder` — founder ambition, constraints, and risk profile.
   - Notion `wiki/<idea-slug>/` — idea workspace container.
   - Notion `wiki/<idea-slug>/overview` — load-bearing idea synthesis.
   - Supporting deep dives live as sibling child pages under the same idea workspace.
@@ -39,6 +40,7 @@ If a paragraph mixes sourced fact and interpretation, split it so the marker att
 
 ## Idea Pages
 
+Run `/founder-profile` before creating the first idea so idea pages have a founder-level decision frame.
 Use `templates/idea-page.md` as the content scaffold for Notion `wiki/<idea-slug>/overview`. Push detailed evidence into supporting child pages instead of overloading the overview page.
 In overview pages, each `Details` heading should be a toggleable H4 so the section lead stays scannable.
 

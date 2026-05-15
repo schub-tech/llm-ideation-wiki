@@ -18,6 +18,7 @@ The Notion root page should mirror the content tree with clean human page titles
 - `🔗 Shared` under `Raw`
 - `<Idea Title>` under `Raw`
 - `📚 Wiki`
+- `🎯 Founder` under `Wiki` after `/founder-profile`
 - `<Idea Title>` under `Wiki`
 - `🧰 Templates`
 - `🧩 Idea Page` under `Templates`
@@ -36,6 +37,7 @@ Default scaffold pages should open with one short task-focused sentence that exp
 
 - Put idea-specific source material under `raw/<idea-slug>/`.
 - Put sources that apply to multiple ideas under `raw/shared/`.
+- Put the founder profile under `wiki/founder`.
 - Use `wiki/<idea-slug>/` as the idea workspace container.
 - Put the current LLM-maintained synthesis under `wiki/<idea-slug>/overview`.
 - Put focused deep dives as additional child pages under `wiki/<idea-slug>/`.

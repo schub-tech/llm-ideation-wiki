@@ -1,18 +1,15 @@
 ---
 name: onboarding
-description: Set up a new Notion-backed LLM Ideation Wiki from a fresh clone. Use when the user asks to get started, onboard, initialize the wiki, connect a Notion root page, or create the first idea.
+description: Set up a new Notion-backed LLM Ideation Wiki from a fresh clone. Use when the user asks to get started, onboard, initialize the wiki, or connect a Notion root page.
 ---
 
-Set up the repo as a Notion-backed idea wiki.
+Set up the repo as a Notion-backed idea wiki. Do infrastructure only; do not create ideas.
 
 **Ask first.**
 
-If the user has not already provided them, ask for:
+If the user has not already provided it, ask for the Notion page URL to use as the wiki root.
 
-1. The Notion page URL to use as the wiki root.
-2. The first idea in a few sentences.
-
-Do not proceed until you have both.
+Do not proceed until you have the root page URL.
 
 **Set up Notion.**
 
@@ -28,33 +25,21 @@ Do not proceed until you have both.
 10. Set `mode` to `notion-cli`, keep `version: 1`, and store `root_url`, `root_page_id`, `root_title`, and `root_emoji`.
 11. Run `scripts/notion_wiki.py seed --refresh-existing` to create `Raw`, `Shared`, `Wiki`, and `Templates`.
 
-**Create the first idea.**
-
-1. Infer a short idea title from the user's description, then turn it into a slug for path keys, for example `bagel-shop-munich`.
-2. Use Title Case human page titles in Notion, not slug-style titles.
-3. Create `raw/<idea-slug>/` under `Raw` with an emoji.
-4. Create `raw/<idea-slug>/founder-note` with the user's initial idea.
-5. Create `wiki/<idea-slug>/` under `Wiki` as the idea workspace container.
-6. Create `wiki/<idea-slug>/overview` from `templates/idea-page.md`.
-7. Fill only what the initial idea supports. Mark founder claims as `^[user-claim]`, inferred synthesis as `^[inferred]`, and uncertain claims as `^[ambiguous]`.
-8. Set an emoji on every Notion page.
-
-Use `scripts/notion_wiki.py create <path> --parent <parent-path> --title <title> --emoji <emoji> --file <file>` for new mapped pages and `scripts/notion_wiki.py update <path> <file>` for durable writes.
-
 **Finish.**
 
 1. Run `scripts/notion_wiki.py pull-cache`.
 2. Run `scripts/notion_wiki.py hash`.
 3. Run `scripts/notion_wiki.py ls`.
-4. Update local `wiki/index.md`.
+4. Update local `wiki/index.md` only if navigation changed.
 5. Update local `hot.md`.
 6. Append one short entry to local `wiki/log.md`.
+7. Tell the user setup is complete and the next step is `/founder-profile`. After that, use `/new-idea` to create the first idea.
 
 **Rules.**
 
 - Notion is canonical for `raw/` source material and user-facing `wiki/` content.
 - The repo is the harness: `README.md`, `AGENTS.md`, `hot.md`, `wiki/index.md`, `wiki/log.md`, `docs/`, `templates/`, scripts, and skills.
 - Do not put harness files into Notion.
-- Do not invent evidence during onboarding; the first overview can mostly be gaps.
+- Do not create idea pages during onboarding.
 - If the root page title or icon cannot be read, default to `LLM Wiki` and `🧠`.
 - The agent can start browser login, but the user must approve Notion access themselves.

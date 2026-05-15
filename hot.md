@@ -17,5 +17,7 @@ Short recent-state cache for the next agent session. Read before broad repo scan
 
 ## Maintenance State
 
-- Run `/onboarding` to connect a Notion root page and create the first idea.
+- Run `/onboarding` to connect a Notion root page.
+- Then run `/founder-profile` before creating ideas.
+- Use `/new-idea` to create the first idea.
 - Generated cache belongs under `.cache/notion/` and is not durable state.

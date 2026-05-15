@@ -2,6 +2,16 @@
 
 Use this when answering wiki questions, ingesting sources, or maintaining the compiled layer.
 
+## Fresh Setup
+
+Use three separate skills:
+
+1. `/onboarding` connects the Notion root and seeds empty `Raw`, `Wiki`, and `Templates` pages.
+2. `/founder-profile` creates `wiki/founder`.
+3. `/new-idea` creates one idea workspace and initial overview.
+
+Do not create ideas during onboarding. Do not create ideas before the founder profile exists unless the user explicitly changes the project rules.
+
 ## Ingest A Raw Source
 
 Read local `hot.md`, local `wiki/index.md`, the relevant Notion `wiki/<idea-slug>/overview` page, and related Notion raw pages first.

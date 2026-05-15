@@ -1,6 +1,6 @@
 ---
-name: frame
-description: Capture the founder's ambition, end-game, financial target, timeframe, investment willingness, and risk tolerance, then reality-check the answers against themselves. Writes to `wiki/founder` in Notion. Use at wiki start, or when the user asks to frame goals, set ambition, capture the founder profile, or reality-check what's possible.
+name: founder-profile
+description: Capture the founder's ambition, end-game, financial target, timeframe, investment willingness, and risk tolerance, then reality-check the answers against themselves. Writes to `wiki/founder` in Notion. Use after onboarding, at wiki start, before creating the first idea, or when the user asks to frame goals, set ambition, capture the founder profile, or reality-check what's possible.
 ---
 
 Capture the founder profile that every later idea will be measured against. One Notion page, six questions, then a tension check.
@@ -60,10 +60,10 @@ Mark every stated answer as `^[user-claim]`. Mark tensions as `^[inferred]`. Do 
 2. `scripts/notion_wiki.py hash`
 3. Update local `hot.md` with one line noting the founder profile is set.
 4. Append one short entry to local `wiki/log.md`.
-5. Tell the user the page is at `wiki/founder` in Notion and that future idea overviews will be checked against it as they take shape.
+5. Tell the user the page is at `wiki/founder` in Notion and that the next step is `/new-idea`.
 
 **Rules.**
 
 - One page only: `wiki/founder`. Never per-idea.
 - Current state, not history — overwrite on update; revision lives in `wiki/log.md`.
-- Do not check the profile against any specific idea here. Idea-vs-profile fit is the job of later skills (`grill-me`, `wiki-lint`, idea overview synthesis) once an idea has enough surface area to test.
+- Do not check the profile against any specific idea here. Idea-vs-profile fit is the job of later skills (`new-idea`, `grill-me`, `wiki-lint`, idea overview synthesis) once an idea has enough surface area to test.

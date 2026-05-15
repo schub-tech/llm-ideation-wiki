@@ -20,14 +20,25 @@ cd llm-ideation-wiki
 
 > Use the onboarding skill to set up this wiki.
 
-The agent will ask you for two things:
+The agent will ask you for one thing:
 
 - the Notion page link that should be the root
-- your first idea, in a few sentences
 
 During setup, it will also check whether the Notion CLI is installed and whether you are logged in. If needed, it can install the CLI, run `ntn login`, and open the browser for you to approve access.
 
-After that, it will create the Notion structure, add the first raw note, and start the first idea page.
+After that, it will create the empty Notion structure.
+
+Then continue with:
+
+```text
+Use the founder-profile skill.
+```
+
+This captures your ambition, risk tolerance, and investment limits. After that, start your first idea:
+
+```text
+Use the new-idea skill.
+```
 
 ## How It Works
 
@@ -40,7 +51,9 @@ Notion is the place to read and edit user-facing content. Local Markdown files a
 
 ## Skills
 
-- `/onboarding` — connects a Notion root page and starts the first idea.
+- `/onboarding` — connects a Notion root page and creates the empty structure.
+- `/founder-profile` — captures the founder ambition and constraints every idea should be judged against.
+- `/new-idea` — creates a raw note, idea workspace, and overview for one idea.
 - `/research` — finds the most important open questions for an idea.
 - `/research-deep` — researches a specific question and writes the result as raw material.
 - `/grill-me` — interviews you to stress-test an idea.

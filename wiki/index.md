@@ -10,4 +10,4 @@ Navigation page for Notion-backed wiki content.
 
 ## Idea Pages
 
-- None yet. Run `/onboarding` to connect a Notion root and create the first idea.
+- None yet. Run `/onboarding`, then `/founder-profile`, then `/new-idea`.
