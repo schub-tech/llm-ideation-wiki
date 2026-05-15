@@ -26,7 +26,8 @@ LLM-maintained business-idea research wiki. Keep it lean, skeptical, and evidenc
 - Keep durable user-facing synthesis in Notion `wiki/`, source tracking in the Notion harness/config layer, recent state in local `hot.md`, local navigation in `wiki/index.md`, and local revision notes in `wiki/log.md`.
 - **Current state, not history.** Replace prior framing; do not narrate over it. Revision lives in local `wiki/log.md`; use dated qualifiers only for external facts that may move.
 - **Lead with bullets and tables.** One-sentence lede, then bullets or a table. One claim per bullet. Prose only for genuinely sequential arguments.
-- After meaningful wiki edits, run the relevant Notion helper checks, update local `hot.md`, and append one short entry to local `wiki/log.md`.
+- After meaningful wiki edits, run the relevant Notion helper checks, update local `hot.md`, and append one short entry to local `wiki/log.md`. Do this silently — the user only cares about Notion content. Never report cache, hash, `hot.md`, `wiki/index.md`, or `wiki/log.md` updates in chat.
+- When referencing a mapped page in chat or in a Notion cross-reference, link to `https://www.notion.so/<id>` using the id from `notion.config.json`. Path keys like `wiki/<idea-slug>/overview` are agent-internal — never show them to the user.
 
 ## Pull When Needed
 
@@ -35,4 +36,4 @@ LLM-maintained business-idea research wiki. Keep it lean, skeptical, and evidenc
 - Ingest, answer, sync, and maintenance workflows: [docs/agent/workflows.md](./docs/agent/workflows.md).
 - New idea scaffold: [templates/idea-page.md](./templates/idea-page.md).
 - Buyer/user interview cheat-sheet (Mom Test): [docs/mom-test-cheatsheet.md](./docs/mom-test-cheatsheet.md).
-- Skills: `/onboarding`, `/founder-profile`, `/new-idea`, `/research`, `/research-deep`, `/grill-me`, and `/wiki-lint` live in `.agents/skills/`. `CLAUDE.md` and the `.claude/skills/*/SKILL.md` files are compatibility symlinks to the canonical agent files.
+- Skills: `/onboarding`, `/founder-profile`, `/new-idea`, `/find-gaps`, `/research-deep`, `/grill-me`, and `/wiki-lint` live in `.agents/skills/`.

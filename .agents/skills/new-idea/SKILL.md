@@ -40,7 +40,7 @@ Use `scripts/notion_wiki.py create <path> --parent <parent-path> --title <title>
 4. Update local `wiki/index.md`.
 5. Update local `hot.md`.
 6. Append one short entry to local `wiki/log.md`.
-7. Tell the user where the idea lives and suggest `/grill-me` or `/research` as the next step.
+7. Tell the user where the idea lives and suggest `/grill-me` or `/find-gaps` as the next step.
 
 **Rules.**
 

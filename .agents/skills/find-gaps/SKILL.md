@@ -1,6 +1,6 @@
 ---
-name: research
-description: Surface research gaps in the wiki and propose a plan to fill them. Reads an idea overview's "Still to validate" lines, "What we do not know" entries, and "Next moves," then proposes targeted research questions tagged by strategy (ask the user, do web research, or both). Use when the user wants to deepen an idea, fill gaps, or says "research this" / "what should I research next" / "what's missing".
+name: find-gaps
+description: Surface research gaps in the wiki and propose a plan to fill them. Reads an idea overview's "Still to validate" lines, "What we do not know" entries, and "Next moves," then proposes targeted research questions tagged by strategy (ask the user, do web research, or both). Use when the user wants to find gaps, deepen an idea, or says "what should I research next" / "what's missing" / "find gaps". For executing web research on a specific question, use `/research-deep` instead.
 ---
 
 Convert the wiki's existing open questions into a concrete research plan. Don't invent new questions — start from what the idea overview already flags as unvalidated, then group, prioritize, and propose a strategy for each.
