@@ -35,4 +35,4 @@ LLM-maintained business-idea research wiki. Keep it lean, skeptical, and evidenc
 - Ingest, answer, sync, and maintenance workflows: [docs/agent/workflows.md](./docs/agent/workflows.md).
 - New idea scaffold: [templates/idea-page.md](./templates/idea-page.md).
 - Buyer/user interview cheat-sheet (Mom Test): [docs/mom-test-cheatsheet.md](./docs/mom-test-cheatsheet.md).
-- Skills: `/research`, `/research-deep`, `/grill-me`, and `/wiki-lint` live in `.agents/skills/` and `.claude/skills/`.
+- Skills: `/onboarding`, `/research`, `/research-deep`, `/grill-me`, and `/wiki-lint` live in `.agents/skills/` and `.claude/skills/`.
