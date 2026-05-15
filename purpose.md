@@ -1,6 +1,6 @@
 ---
 title: "Purpose"
-updated: "2026-05-06"
+updated: "2026-05-15"
 ---
 
 # Purpose
@@ -21,7 +21,7 @@ An idea stays weak when the case rests mainly on vibes, friend feedback, broad T
 
 ## Current Portfolio
 
-No idea content is loaded in `main` by default. Add raw material under `raw/ideas/` or `raw/notes/`, then ingest it into `wiki/`.
+No idea content is loaded by default. In Notion-backed mode, add idea-specific raw material under Notion `raw/<idea-slug>/`, cross-idea material under Notion `raw/shared/`, then ingest it into Notion `wiki/<idea-slug>/`.
 
 ## Current Gating Questions
 

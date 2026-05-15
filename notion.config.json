@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "root_page_id": "361bc1d4596980e3ae89f90eb61b0351",
+  "root_url": "https://www.notion.so/LLM-Wiki-361bc1d4596980e3ae89f90eb61b0351",
+  "root_emoji": "🧠",
+  "mode": "notion-cli",
+  "pages": {
+    "raw/": {
+      "id": "361bc1d4596981fdaf9cd75fe0c21666",
+      "title": "raw",
+      "parent": "",
+      "emoji": "🧾"
+    },
+    "wiki/": {
+      "id": "361bc1d4596981ee98cbf6903d5484d4",
+      "title": "wiki",
+      "parent": "",
+      "emoji": "📚"
+    },
+    "raw/shared/": {
+      "id": "361bc1d45969813ba116e527986cce94",
+      "title": "shared",
+      "parent": "raw/",
+      "emoji": "🔗"
+    }
+  },
+  "last_seeded": "2026-05-15"
+}
