@@ -1,1 +1,3 @@
 # Log
+
+- No entries yet.

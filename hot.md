@@ -1,19 +1,23 @@
 ---
 title: "Hot Cache"
-updated: "2026-05-06"
+updated: ""
 ---
 
 # Hot Cache
 
-Short recent-state cache for the next agent session. Read after `purpose.md` and before broad repo scans.
+Short recent-state cache for the next agent session. Read before broad repo scans.
 
 ## Recent Activity
 
+- Fresh distribution copy. No Notion root or idea content is configured yet.
+
 ## Active Threads
 
-- None. `main` is intentionally content-free.
+- None.
 
 ## Maintenance State
 
-- `.manifest.json` should have zero raw sources until new material is added.
-- `wiki/index.md` should list only special files until the first idea page is created.
+- Run `/onboarding` to connect a Notion root page.
+- Then run `/founder-profile` before creating ideas.
+- Use `/new-idea` to create the first idea.
+- Generated cache belongs under `.cache/notion/` and is not durable state.

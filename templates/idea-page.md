@@ -1,10 +1,10 @@
 # Idea Page Template
 
-Scaffold for `wiki/ideas/<idea>/overview.md`. The shape is adapted from the schub day format — each section has a slide-ready lead paragraph followed by a `#### Details` block holding the supporting evidence and open questions. A reader scanning only the section leads should get the picture. When a section's evidence starts to overflow, spin it into a nested deep-dive note (`type: "note"`) alongside the overview and link from `## Related`.
+Scaffold for Notion `wiki/<idea-slug>/overview`. The shape is adapted from the schub day format — each section has a slide-ready lead paragraph followed by a toggleable `#### Details` block holding the supporting evidence and open questions. A reader scanning only the section leads should get the picture. When a section's evidence starts to overflow, spin it into a sibling deep-dive child page under the same idea workspace and link from `Related`.
 
 ## Scaffold
 
-Copy the block below into `wiki/ideas/<idea>/overview.md`.
+Copy the block below into Notion `wiki/<idea-slug>/overview`.
 
 ````markdown
 ---
@@ -12,7 +12,7 @@ title: "Idea Title"
 type: "idea"
 summary: "One-line summary for index generation."
 status: "seed"
-verdict: "exploring"
+verdict: "active"
 tags: []
 source_files: []
 updated: "YYYY-MM-DD"

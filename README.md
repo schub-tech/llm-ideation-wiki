@@ -2,57 +2,79 @@
 
 > Built by [**Schub**](https://www.schub.tech/).
 
-A workspace for taking business ideas from half-formed hunch to a defended verdict. You feed it brainstorms, interviews, and research; an LLM builds a structured case for each idea, surfaces what still needs validating, and stress-tests the thesis as new evidence comes in.
+A Notion-based workspace for turning rough business ideas into structured, evidence-bound decisions. You bring ideas, notes, interviews, and research; your AI agent keeps the wiki organized and pushes each idea toward a clear verdict.
 
-## Quick Start
+## Get Started
 
-1. **Fork this repo** (recommended — gives you your own working copy to evolve) or clone it directly to try it out.
-2. **Clone locally:** `git clone <your-fork-url>`
-3. **Drop a starting point** into `raw/ideas/` as `YYYY-MM-DD-<idea-slug>.md` — a brainstorm, scratch note, or a few paragraphs explaining what you want to research.
-4. **Open the repo with your AI agent** (Claude Code recommended — see note at the bottom). Ask it to scaffold an idea overview from your starting note using `templates/idea-page.md`. It will fill what your note supports and leave honest gaps everywhere else.
-5. **Use the skills** (see [Skills](#skills) below) to grow the wiki:
-   - `/research` to surface unvalidated gaps; `/research-deep` to fill them with web research that lands as new raw notes.
-   - `/grill-me` to stress-test the idea section by section once the overview has substance.
-6. **Add new material** (user interviews, external sources, articles) to `raw/notes/` as you collect it, and ask the LLM to ingest it.
-7. **Ask questions** any time — the LLM reads `wiki/index.md` first and works down from there.
+1. **Fork this repo** to make your own copy, or clone it directly if you just want to try it.
+2. **Clone it to your computer:**
 
-The wiki is meant to be living: each new piece of evidence either confirms a load-bearing claim, kills one, or sharpens the open questions. The `verdict` field on each idea (`exploring` → `pursuing` / `parked` / `killed`) tracks where it actually stands.
+```bash
+git clone <your-repo-url>
+cd llm-ideation-wiki
+```
 
-## Structure
+3. **Create or choose a Notion page** that should become the root of your wiki.
+4. **Open this folder with your AI agent.**
+5. **Ask the agent:**
 
-- `raw/` — immutable source material (notes, brainstorms, attachments).
-- `wiki/` — compiled markdown wiki the LLM maintains.
-- `purpose.md` — decision criteria and current portfolio context for the LLM.
-- `hot.md` — short recent-state cache for fast session startup.
-- `.manifest.json` — source hash ledger for ingest tracking and delta checks.
-- `templates/` — scaffold for new idea pages.
-- `docs/agent/` — progressively disclosed schema, provenance, and workflow guidance for agents.
-- `.agents/skills/` and `.claude/skills/` — LLM skills you can invoke (see [Skills](#skills) below).
-- `scripts/` — index and lint helpers.
-- `AGENTS.md` — lean always-loaded operating rules; deeper instructions live in `docs/agent/` and skills.
+> Use the onboarding skill to set up this wiki.
+
+The agent will ask you for one thing:
+
+- the Notion page link that should be the root
+
+During setup, it will also check whether the Notion CLI is installed and whether you are logged in. If needed, it can install the CLI, run `ntn login`, and open the browser for you to approve access.
+
+After that, it will create the empty Notion structure.
+
+Then continue with:
+
+```text
+Use the founder-profile skill.
+```
+
+This captures your ambition, risk tolerance, and investment limits. After that, start your first idea:
+
+```text
+Use the new-idea skill.
+```
+
+## How It Works
+
+- `Raw` in Notion holds inputs: founder notes, interviews, articles, data, and other source material.
+- `Wiki` in Notion holds the current synthesis for each idea.
+- `Templates` in Notion gives you copyable starting points.
+- This repo holds the harness: agent instructions, skills, scripts, templates, and local state.
+
+Notion is the place to read and edit user-facing content. Local Markdown files are for the agent.
 
 ## Skills
 
-- `/grill-me` — interviews you about an idea one question at a time, walking through the overview's sections (Problem → Solution → Why this works → Market → Risks).
-- `/research` — surfaces research gaps from an idea overview ("Still to validate" lines, "What we do not know," "Next moves") and proposes a plan tagged by strategy: ask the user, web research, or hybrid.
-- `/research-deep` — runs targeted web research on specific questions and writes findings to `raw/notes/` for ingest.
-- `/wiki-lint` — semantic lint workflow for unsupported claims, unmarked synthesis, stale validations, provenance drift, and risk/verdict mismatch.
+- `/onboarding` — connects a Notion root page and creates the empty structure.
+- `/founder-profile` — captures the founder ambition and constraints every idea should be judged against.
+- `/new-idea` — creates a raw note, idea workspace, and overview for one idea.
+- `/research` — finds the most important open questions for an idea.
+- `/research-deep` — researches a specific question and writes the result as raw material.
+- `/grill-me` — interviews you to stress-test an idea.
+- `/wiki-lint` — checks for weak claims, missing evidence, stale assumptions, and unclear verdicts.
 
-Skills live in `.agents/skills/` and `.claude/skills/`. Claude Code picks up `.claude/skills/`; other agents can read the matching `SKILL.md` files from `.agents/skills/`.
+Skills live in `.agents/skills/` and `.claude/skills/`.
 
-## Scripts
+## Useful Agent Commands
 
-- `rebuild_index.py` — regenerates `wiki/index.md` from page frontmatter.
-- `find_orphans.py` — lists wiki pages with no inbound links.
-- `check_wikilinks.py` — lists broken markdown links.
-- `wiki_status.py` — compares `raw/` against `.manifest.json` and reports new, modified, deleted, or unlinked sources.
-- `update_manifest.py` — refreshes `.manifest.json` from raw source hashes and wiki `source_files` frontmatter after an ingest.
+These are mainly for the agent, but they are helpful to know:
 
-## Notes
+```bash
+ntn doctor
+ntn login
+scripts/notion_wiki.py seed --refresh-existing
+scripts/notion_wiki.py ls
+scripts/notion_wiki.py pull-cache
+scripts/notion_wiki.py hash
+```
 
-- **Viewer:** the wiki uses Obsidian-friendly conventions (frontmatter and wikilinks), so any markdown viewer works — [Obsidian](https://obsidian.md/) just makes browsing and following links nicer.
-- **LLM tool:** any agent that can read and edit local files works, but the Claude family is recommended for its conversational style.
-- Highly inspired by Andrej Karpathy's [LLM Wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).
+Highly inspired by Andrej Karpathy's [LLM Wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).
 
 ---
 
