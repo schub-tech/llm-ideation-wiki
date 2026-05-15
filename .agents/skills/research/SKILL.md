@@ -22,7 +22,7 @@ Convert the wiki's existing open questions into a concrete research plan. Don't 
 - Depth (one search → one note vs. multiple search rounds → comprehensive note).
 - Whether to run web items in parallel via `/research-deep`.
 
-**Hand off.** For web items, invoke `/research-deep` with the confirmed questions. For user-question items, surface them inline one at a time and capture the answers — short answers go directly into the relevant `Still to validate` line in the wiki overview; longer answers may warrant a new raw idea note in `raw/ideas/`.
+**Hand off.** For web items, invoke `/research-deep` with the confirmed questions. For user-question items, surface them inline one at a time and capture the answers — short answers go directly into the relevant `Still to validate` line in the Notion wiki page; longer answers may warrant a new raw source page under Notion `raw/<idea-slug>/`.
 
 Tie every proposed question to a specific wiki claim it would confirm or kill (e.g. "this would test the 60%-selector-drift bank-case figure"). Don't propose research the user could answer in two minutes. If a "Still to validate" line hedges, sharpen the question before researching it.
 

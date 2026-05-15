@@ -5,7 +5,7 @@ Use this for all raw-source and user-facing wiki content work.
 ## Canonical Store
 
 - Notion is canonical for user-facing wiki content and source material only.
-- The repo is the harness: `AGENTS.md`, `README.md`, `purpose.md`, `hot.md`, `wiki/index.md`, `wiki/log.md`, scripts, skills, templates, and operating instructions.
+- The repo is the harness: `AGENTS.md`, `README.md`, `hot.md`, `wiki/index.md`, `wiki/log.md`, scripts, skills, templates, and operating instructions.
 - Local files under `.cache/notion/` are generated working copies only.
 - Do not edit generated cache files as durable wiki state.
 
@@ -34,7 +34,7 @@ Do not repeat the Notion page title as the first heading in the page body; Notio
 
 ## CLI Rules
 
-- Read local harness context first: `purpose.md`, `hot.md`, `AGENTS.md`, and relevant files under `docs/agent/`.
+- Read local harness context first: `hot.md`, `AGENTS.md`, and relevant files under `docs/agent/`.
 - Use `scripts/notion_wiki.py get <path>` to read a known page.
 - Use `scripts/notion_wiki.py update <path> <file>` to replace a known page with Markdown.
 - Use `scripts/notion_wiki.py pull-cache` to refresh generated local cache for grep and lint.

@@ -9,3 +9,5 @@
 - 2026-05-15 — Cleaned Notion page titles/body headings to human names (`raw`, `shared`, `wiki`) while keeping path keys in the harness config.
 - 2026-05-15 — Removed duplicated title headings from Notion container page bodies; page titles now live only in Notion's title field.
 - 2026-05-15 — Removed dual-mode/file-based wording from agent instructions and refreshed workflow/contract docs for Notion-only content storage.
+- 2026-05-15 — Ported harness simplifications from `llm-knowledge-bases` commit `7b8f13c`: removed `purpose.md` from startup, made verdicts `active|killed`, and refreshed Notion-first skills/docs.
+- 2026-05-15 — Added the missing buyer-interview protocol template from `llm-knowledge-bases`, adapted for Notion child pages.

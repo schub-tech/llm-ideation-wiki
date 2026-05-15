@@ -9,7 +9,7 @@ Use Notion as the canonical store for raw material and user-facing wiki content.
 
 1. Read `notion.config.json`.
 2. Read `docs/agent/notion-contract.md`.
-3. Read local `purpose.md`, `hot.md`, and `wiki/index.md`.
+3. Read local `hot.md` and `wiki/index.md`.
 
 **Read pages.**
 

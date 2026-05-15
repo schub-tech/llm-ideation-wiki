@@ -16,18 +16,17 @@ A workspace for taking business ideas from half-formed hunch to a defended verdi
 6. **Add new material** (user interviews, external sources, articles) to the relevant `raw/<idea-slug>/` page, or to `raw/shared/` if it applies across ideas, and ask the LLM to ingest it.
 7. **Ask questions** any time — the LLM reads `wiki/index.md` first and works down from there.
 
-The wiki is meant to be living: each new piece of evidence either confirms a load-bearing claim, kills one, or sharpens the open questions. The `verdict` field on each idea (`exploring` → `pursuing` / `parked` / `killed`) tracks where it actually stands.
+The wiki is meant to be living: each new piece of evidence either confirms a load-bearing claim, kills one, or sharpens the open questions. The `verdict` field on each idea is binary — `active` or `killed`. An idea is alive until disconfirming evidence kills it; a killed idea can be flipped back to active if new evidence changes the picture.
 
 ## Structure
 
 - Notion `raw/` — immutable source material (notes, brainstorms, attachments).
 - Notion `wiki/` — user-facing compiled wiki the LLM maintains.
-- `purpose.md` — decision criteria and current portfolio context for the LLM.
 - `hot.md` — short recent-state cache for fast session startup.
 - `wiki/index.md` — local navigation for idea pages.
 - `wiki/log.md` — local append-only change log.
 - `notion.config.json` — Notion root and logical path mapping.
-- `templates/` — scaffold for new idea pages.
+- `templates/` — scaffolds for new idea pages and supporting process notes.
 - `docs/agent/` — progressively disclosed schema, provenance, and workflow guidance for agents.
 - `.agents/skills/` and `.claude/skills/` — LLM skills you can invoke (see [Skills](#skills) below).
 - `scripts/` — index and lint helpers.
@@ -35,7 +34,7 @@ The wiki is meant to be living: each new piece of evidence either confirms a loa
 
 ## Notion Content Store
 
-Notion is the canonical content store for user-facing `wiki/<idea-slug>/` pages and `raw/<idea-slug>/` source material. Local Markdown files such as `purpose.md`, `hot.md`, `wiki/index.md`, `wiki/log.md`, `templates/`, and `docs/` are the agent harness; durable content reads and writes go through the Notion CLI.
+Notion is the canonical content store for user-facing `wiki/<idea-slug>/` pages and `raw/<idea-slug>/` source material. Local Markdown files such as `hot.md`, `wiki/index.md`, `wiki/log.md`, `templates/`, and `docs/` are the agent harness; durable content reads and writes go through the Notion CLI.
 
 ```bash
 ntn doctor
