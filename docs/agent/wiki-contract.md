@@ -1,61 +1,40 @@
 # Wiki Contract
 
-Use this when creating or editing wiki pages, source references, provenance markers, or idea structure.
+Content and structure rules for wiki pages, sources, provenance, and idea layout. Notion mechanics (CLI, page conventions) live in [notion-contract.md](./notion-contract.md).
 
 ## Layout
 
-- Local `hot.md` — short recent-state cache. Keep it current after meaningful writes.
+- Local `hot.md` — short recent-state cache; keep current after meaningful writes.
 - Local `wiki/index.md` — navigation for idea pages.
 - Local `wiki/log.md` — append-only dated change log.
-- Notion `raw/` — immutable source material.
-  - Notion `raw/shared/` — source material that applies to multiple ideas.
-  - Notion `raw/<idea-slug>/` — idea-specific source material.
-- Notion `wiki/` — user-facing compiled layer the LLM maintains.
-  - Notion `wiki/founder` — founder ambition, constraints, and risk profile.
-  - Notion `wiki/<idea-slug>/` — idea workspace container.
-  - Notion `wiki/<idea-slug>/overview` — load-bearing idea synthesis.
-  - Supporting deep dives live as sibling child pages under the same idea workspace.
+- Notion `raw/` — source material, immutable after ingest; update `wiki/` instead.
+  - `raw/shared/` — applies to multiple ideas. `raw/<idea-slug>/` — idea-specific.
+- Notion `wiki/` — the LLM-maintained, user-facing compiled layer.
+  - `wiki/founder` — founder ambition, constraints, risk profile.
+  - `wiki/<idea-slug>/` — idea workspace; `…/overview` — load-bearing synthesis; deep dives as sibling child pages.
 
-## Page Metadata
-
-Every Notion content page should have:
-
-- A clean human title, not a path-like title.
-- An emoji icon.
-- A logical path entry in `notion.config.json` if the agent must address it by script.
-- Idea verdicts are binary: `active` or `killed`.
-
-Do not repeat the Notion page title as the first heading in the page body.
-
-## Provenance Markers
+## Provenance markers
 
 Keep evidence and synthesis distinguishable next to the claim.
 
-- Directly supported claims get a raw-source citation and no marker.
-- `^[inferred]` marks synthesis, implications, or claims combined across sources.
-- `^[ambiguous]` marks contested, weak, unclear, or methodology-limited claims.
-- `^[user-claim]` marks founder/user assertions that are not independently validated.
+- No marker — directly supported; carries a raw-source citation.
+- `^[inferred]` — synthesis, implications, or claims combined across sources.
+- `^[ambiguous]` — contested, weak, unclear, or methodology-limited claims.
+- `^[user-claim]` — founder/user assertions not independently validated.
+- If a paragraph mixes sourced fact and interpretation, split it so the marker attaches to the specific claim.
 
-If a paragraph mixes sourced fact and interpretation, split it so the marker attaches to the specific inferred or ambiguous claim.
+## Idea pages
 
-## Idea Pages
+- Verdicts are binary: `active` or `killed`.
+- Run `/founder-profile` before the first idea so pages have a founder decision frame.
+- Use `templates/idea-page.md` as the `…/overview` scaffold; push detailed evidence into sibling deep-dive pages, not the overview.
+- Each `Details` heading is a toggleable H4 so section leads stay scannable. `create`/`update` auto-convert `#### Details` on `*/overview` and `templates/idea-page` paths — don't write raw Notion toggle syntax.
 
-Run `/founder-profile` before creating the first idea so idea pages have a founder-level decision frame.
-Use `templates/idea-page.md` as the content scaffold for Notion `wiki/<idea-slug>/overview`. Push detailed evidence into supporting child pages instead of overloading the overview page.
-In overview pages, each `Details` heading should be a toggleable H4 so the section lead stays scannable. `scripts/notion_wiki.py create` and `update` auto-convert `#### Details` blocks into toggleable H4s on `*/overview` and `templates/idea-page` paths — do not write raw Notion toggle syntax in the source Markdown.
+## Writing
 
-## Page Body Format
-
-- Do not include YAML frontmatter in page bodies. Page metadata lives in `notion.config.json` and Notion's page properties — nothing reads a `---` block at the top of the body, and Notion renders it as visible text. The upload script strips a leading frontmatter block as a safety net, but the canonical template and any new authored page should not contain one in the first place.
-
-## Writing Rules
-
-- Concise markdown; broad pages over many narrow pages.
-- Cite raw sources with stable Notion page paths, source URLs, quote IDs, or nearest-heading references.
-- Cite the paragraph, quote, or source section that makes the claim checkable, not every sentence.
-- Preserve uncertainty explicitly; distinguish facts, synthesis, user claims, and open questions.
+- Concise markdown; prefer broad pages over many narrow ones.
+- Cite the paragraph, quote, or source section that makes a claim checkable — not every sentence. Use stable Notion paths, source URLs, quote IDs, or nearest-heading references.
+- Preserve uncertainty: distinguish fact, synthesis, user claim, and open question.
 - Add a `Related` section when a page has obvious neighbors.
-
-## Scannable And Current
-
-Both rules are stated in [AGENTS.md](../../AGENTS.md) — lead with bullets/tables, and describe current state rather than narrating history. Apply them on every edit.
+- No YAML frontmatter in page bodies — metadata lives in `notion.config.json` and Notion properties; Notion renders a `---` block as visible text. (The upload script strips a leading block as a safety net.)
+- Scannable and current-state rules: see [AGENTS.md](../../AGENTS.md), applied on every edit.

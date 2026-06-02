@@ -1,6 +1,10 @@
 # Idea Page Template
 
-Scaffold for Notion `wiki/<idea-slug>/overview`. The shape is adapted from the schub day format — each section has a slide-ready lead paragraph followed by a toggleable `#### Details` block holding the supporting evidence and open questions. A reader scanning only the section leads should get the picture. When a section's evidence starts to overflow, spin it into a sibling deep-dive child page under the same idea workspace and link from `Related`.
+Scaffold for Notion `wiki/<idea-slug>/overview` — slide-style, scannable from the section leads alone.
+
+- Each section: a slide-ready lead paragraph, then a toggleable `#### Details` block for evidence and open questions.
+- A reader scanning only the leads should get the whole picture.
+- When a section's evidence overflows, spin it into a sibling deep-dive child page and link it from `Related`.
 
 ## Scaffold
 

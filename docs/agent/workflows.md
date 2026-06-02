@@ -1,42 +1,40 @@
 # Agent Workflows
 
-Use this when answering wiki questions, ingesting sources, or maintaining the compiled layer.
+Step sequences for setup, ingest, answering, lint, and sync. Commands: see [notion-contract.md](./notion-contract.md). Output and maintenance rules: [AGENTS.md](../../AGENTS.md).
 
-## Fresh Setup
+## Fresh setup
 
-Use three separate skills:
+Three separate skills, in order:
 
-1. `/onboarding` connects the Notion root and seeds empty `Raw`, `Wiki`, and `Templates` pages.
-2. `/founder-profile` creates `wiki/founder`.
-3. `/new-idea` creates one idea workspace and initial overview.
+1. `/onboarding` — connect the Notion root; seed empty `Raw`, `Wiki`, `Templates`.
+2. `/founder-profile` — create `wiki/founder`.
+3. `/new-idea` — create one idea workspace and initial overview.
 
-Do not create ideas during onboarding. Do not create ideas before the founder profile exists unless the user explicitly changes the project rules.
+Don't create ideas during onboarding, or before the founder profile exists, unless the user changes the project rules.
 
-## Ingest A Raw Source
+## Ingest a raw source
 
-Read local `hot.md`, local `wiki/index.md`, the relevant Notion `wiki/<idea-slug>/overview` page, and related Notion raw pages first.
+Read first: local `hot.md`, `wiki/index.md`, the relevant Notion `wiki/<idea-slug>/overview`, and related raw pages.
 
-Work in two phases:
+1. **Analyze** before editing: material claims, entities, decisions, contradictions, affected pages, provenance state, open questions.
+2. **Write**: distill into the relevant `…/overview` and supporting child pages. Merge with existing synthesis; don't append duplicate summaries or create per-source summary pages.
 
-1. Analysis: identify material claims, entities, decisions, contradictions, affected pages, provenance state (`direct`, `inferred`, `ambiguous`, `user-claim`), and open questions before editing.
-2. Write: distill into the relevant Notion `wiki/<idea-slug>/overview` page and supporting child pages. Merge with existing synthesis instead of appending duplicate summaries. Do not create per-source summary pages.
+Then run the maintenance ritual:
 
-After meaningful edits:
+1. Update `wiki/index.md` if navigation changed.
+2. Update `hot.md`.
+3. Append one dated line to `wiki/log.md`.
+4. Run `pull-cache` then `hash` to verify the mapping still reads cleanly.
 
-1. Update local `wiki/index.md` if navigation changed.
-2. Update local `hot.md`.
-3. Append one short dated entry to local `wiki/log.md`.
-4. Run `scripts/notion_wiki.py pull-cache` and `scripts/notion_wiki.py hash` to verify the Notion mapping still reads cleanly.
+## Answer a question
 
-## Answer A Question
-
-Read local `hot.md` and local `wiki/index.md` first, then the relevant Notion `wiki/<idea-slug>/overview` page and Notion raw sources. Use `scripts/notion_wiki.py pull-cache` when broad search is cheaper than targeted reads.
-
-If the premise is shaky, name it before answering. Cite pages or raw sources relied on. Surface contradictions instead of smoothing them. If the wiki does not answer something, say so. If the answer is durable, update the existing Notion wiki page and refresh local index/log/hot as needed.
+- Read `hot.md` and `wiki/index.md` first, then the relevant `…/overview` and raw sources. Use `pull-cache` when broad search beats targeted reads.
+- Name a shaky premise before answering. Cite pages and sources relied on. Surface contradictions; don't smooth them. Say so if the wiki doesn't answer it.
+- If the answer is durable, update the existing wiki page and refresh index/log/hot.
 
 ## Lint
 
-Use deterministic checks that understand the Notion mapping:
+Deterministic checks:
 
 ```bash
 python3 -m json.tool notion.config.json >/dev/null
@@ -46,18 +44,8 @@ scripts/notion_wiki.py pull-cache
 scripts/notion_wiki.py hash
 ```
 
-For semantic lint, use `/wiki-lint`: unsupported material claims, unmarked synthesis, ambiguity drift, user-only premises, stale claims, risk/verdict mismatch, and answered validations.
+Semantic lint via `/wiki-lint`: unsupported claims, unmarked synthesis, ambiguity drift, user-only premises, stale claims, risk/verdict mismatch, answered validations. Fix the wiki directly unless findings warrant a local lint note.
 
-Fix the wiki directly unless findings are substantial enough to warrant a local lint note.
+## Sync from outside the vault
 
-## Sync From Outside The Vault
-
-Treat external material like ingest, but import only what is worth remembering. Avoid raw implementation detail unless it is the actual lesson.
-
-## Scripts
-
-- `scripts/notion_wiki.py get <path>` — print Markdown for a mapped Notion content page.
-- `scripts/notion_wiki.py update <path> <file>` — replace a mapped Notion content page from Markdown.
-- `scripts/notion_wiki.py seed` — ensure the standard Notion content containers exist and have expected titles/icons.
-- `scripts/notion_wiki.py pull-cache` — refresh generated Markdown cache under `.cache/notion/`.
-- `scripts/notion_wiki.py hash` — calculate Notion content hashes for mapped pages.
+Treat like ingest, but import only what's worth remembering. Skip raw implementation detail unless it's the actual lesson.
