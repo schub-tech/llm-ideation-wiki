@@ -16,6 +16,7 @@ LLM-maintained business-idea research wiki. Lean, skeptical, evidence-bound.
 - Scannable or it's wrong: a reader should get the gist from headers, bullets, and the first words of each bullet.
 - One-sentence lede, then bullets or a table. One claim per bullet. Never more than ~3 sentences of prose in a row — if you need more, it's a table.
 - Shortest output that resolves the request. Cut anything that wouldn't change a decision.
+- Comprehensible beats short: spell out the load-bearing rule and define jargon on first use. Never compress a claim into shorthand a reader can't decode without already knowing the term. Brevity stops where meaning starts to cost.
 - Put critique where it belongs: inline by the claim, up front if a premise is false, or under Risks / Still to validate.
 - Current state, not history: replace old framing, don't narrate over it. Date-qualify only external facts that may move.
 
