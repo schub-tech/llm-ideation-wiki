@@ -20,6 +20,6 @@ Run targeted web research on one or more research questions and produce raw note
 
 **Report back.** After all notes are written (or all sub-agents have returned), list them with a one-line summary each, ordered by what would most move the verdict. Flag findings that confirm a load-bearing claim, findings that kill one, and questions where the search returned no useful evidence.
 
-**Suggest the ingest pass.** Once the raw pages exist, propose running the ingest workflow in `docs/agent/workflows.md` next — distilling the new findings into the relevant Notion idea page and child pages, merging with existing synthesis instead of appending duplicates, updating local `wiki/index.md` if navigation changed, updating `hot.md`, and appending to `wiki/log.md`. Offer to do it directly. Don't leave new evidence as raw-only.
+**Suggest the ingest pass.** Once the raw pages exist, propose running the ingest workflow in `docs/agent/workflows.md` next. Offer to do it directly. Don't leave new evidence as raw-only.
 
 Cite real URLs only — never fabricate one. If a search returns nothing useful, say so explicitly rather than padding the note with adjacent content.

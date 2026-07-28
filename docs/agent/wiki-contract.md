@@ -37,4 +37,4 @@ Keep evidence and synthesis distinguishable next to the claim.
 - Preserve uncertainty: distinguish fact, synthesis, user claim, and open question.
 - Add a `Related` section when a page has obvious neighbors.
 - No YAML frontmatter in page bodies — metadata lives in `notion.config.json` and Notion properties; Notion renders a `---` block as visible text. (The upload script strips a leading block as a safety net.)
-- Scannable and current-state rules: see [AGENTS.md](../../AGENTS.md), applied on every edit.
+- Sentence-level, scannable, and current-state rules: see [AGENTS.md](../../AGENTS.md) `## Output`, applied on every page edit — page bodies are held to the same bar as chat.

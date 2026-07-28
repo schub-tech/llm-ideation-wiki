@@ -61,6 +61,8 @@ Notion is the place to read and edit user-facing content. Local Markdown files a
 
 Skills live in `.agents/skills/`. `CLAUDE.md` and the `.claude/skills/*/SKILL.md` files are compatibility symlinks for Claude-style agents.
 
+Agent instructions live in `AGENTS.md`, with detail in `docs/agent/`.
+
 ## Useful Agent Commands
 
 These are mainly for the agent, but they are helpful to know:

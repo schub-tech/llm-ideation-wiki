@@ -56,14 +56,10 @@ Mark every stated answer as `^[user-claim]`. Mark tensions as `^[inferred]`. Do 
 
 **Finish.**
 
-1. `scripts/notion_wiki.py pull-cache`
-2. `scripts/notion_wiki.py hash`
-3. Update local `hot.md` with one line noting the founder profile is set.
-4. Append one short entry to local `wiki/log.md`.
-5. Tell the user the page is at `wiki/founder` in Notion and that the next step is `/new-idea`.
+1. Run the ritual (`AGENTS.md` § Mechanics).
+2. Tell the user the page is at `wiki/founder` in Notion and that the next step is `/new-idea`.
 
 **Rules.**
 
 - One page only: `wiki/founder`. Never per-idea.
-- Current state, not history — overwrite on update; revision lives in `wiki/log.md`.
 - Do not check the profile against any specific idea here. Idea-vs-profile fit is the job of later skills (`new-idea`, `grill-me`, `wiki-lint`, idea overview synthesis) once an idea has enough surface area to test.

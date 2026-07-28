@@ -20,6 +20,7 @@ Run a semantic lint pass over the business-idea wiki. This complements the Notio
 - **Answered validations.** If a `Still to validate` item is already answered in a deep-dive or raw note, update or remove it.
 - **Stale claims.** Pages older than 90 days should be checked for date-sensitive claims before being treated as current.
 - **Mapping mismatch.** Notion pages that should be script-addressable should either be added to `notion.config.json` or explicitly left as manually navigated child pages.
+- **Prose bloat.** Flag any sentence over ~20 words, any bullet carrying two claims, and any run of more than ~3 sentences of prose. Rewrite to the `## Output` rules in `AGENTS.md`.
 
 **Report format.** Lead with the highest-severity findings:
 
@@ -42,4 +43,4 @@ Use priorities this way:
 - **P2:** Material but not immediately verdict-changing.
 - **P3:** Hygiene, clarity, or future retrieval quality.
 
-If the user asked you to fix issues, edit the Notion wiki directly, then update local `wiki/index.md` when navigation changes, update `hot.md`, append one short entry to `wiki/log.md`, and run the Notion helper checks.
+If the user asked you to fix issues, edit the Notion wiki directly, then run the ritual (`AGENTS.md` § Mechanics).

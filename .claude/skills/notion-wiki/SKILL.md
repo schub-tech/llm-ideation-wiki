@@ -1,1 +1,0 @@
-../../../.agents/skills/notion-wiki/SKILL.md

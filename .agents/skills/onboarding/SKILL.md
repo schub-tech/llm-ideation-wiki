@@ -27,19 +27,11 @@ Do not proceed until you have the root page URL.
 
 **Finish.**
 
-1. Run `scripts/notion_wiki.py pull-cache`.
-2. Run `scripts/notion_wiki.py hash`.
-3. Run `scripts/notion_wiki.py ls`.
-4. Update local `wiki/index.md` only if navigation changed.
-5. Update local `hot.md`.
-6. Append one short entry to local `wiki/log.md`.
-7. Tell the user setup is complete and the next step is `/founder-profile`. After that, use `/new-idea` to create the first idea.
+1. Run the ritual (`AGENTS.md` § Mechanics), plus `scripts/notion_wiki.py ls`.
+2. Tell the user setup is complete and the next step is `/founder-profile`. After that, use `/new-idea` to create the first idea.
 
 **Rules.**
 
-- Notion is canonical for `raw/` source material and user-facing `wiki/` content.
-- The repo is the harness: `README.md`, `AGENTS.md`, `hot.md`, `wiki/index.md`, `wiki/log.md`, `docs/`, `templates/`, scripts, and skills.
-- Do not put harness files into Notion.
 - Do not create idea pages during onboarding.
 - If the root page title or icon cannot be read, default to `LLM Wiki` and `🧠`.
 - The agent can start browser login, but the user must approve Notion access themselves.

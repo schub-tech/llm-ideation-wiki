@@ -34,17 +34,10 @@ Use `scripts/notion_wiki.py create <path> --parent <parent-path> --title <title>
 
 **Finish.**
 
-1. Run `scripts/notion_wiki.py pull-cache`.
-2. Run `scripts/notion_wiki.py hash`.
-3. Run `scripts/notion_wiki.py ls`.
-4. Update local `wiki/index.md`.
-5. Update local `hot.md`.
-6. Append one short entry to local `wiki/log.md`.
-7. Tell the user where the idea lives and suggest `/grill-me` or `/find-gaps` as the next step.
+1. Run the ritual (`AGENTS.md` § Mechanics), plus `scripts/notion_wiki.py ls`.
+2. Tell the user where the idea lives and suggest `/grill-me` or `/find-gaps` as the next step.
 
 **Rules.**
 
 - Create exactly one idea per run.
 - Do not invent evidence. The first overview can mostly be gaps.
-- Keep raw founder notes under `raw/<idea-slug>/`; keep synthesis under `wiki/<idea-slug>/overview`.
-- Do not put harness files into Notion.
