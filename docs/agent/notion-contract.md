@@ -6,7 +6,8 @@ Notion-operational mechanics: how to read, write, and map pages via the helper s
 
 - Notion is canonical for user-facing `wiki/` and source `raw/` content only.
 - The repo is the harness (`AGENTS.md`, `hot.md`, `wiki/index.md`, `wiki/log.md`, scripts, skills, templates). Layout: see [wiki-contract.md](./wiki-contract.md).
-- `.cache/notion/` holds generated working copies — never edit as durable state. If cache or hashes disagree with Notion, Notion wins unless the last edit was accidental.
+- `.cache/notion/` holds generated working copies — never edit as durable state. If the cache disagrees with Notion, Notion wins unless the last edit was accidental.
+- `.cache/notion-versions.json` records each page's last-edited time as of your last read or write. `update` checks it to avoid overwriting edits you have not seen.
 
 ## Page conventions
 
@@ -28,15 +29,19 @@ The Notion root mirrors the content tree:
 
 ## CLI (`scripts/notion_wiki.py`)
 
+Container paths end in `/` (`wiki/<idea-slug>/`), but every command also accepts them without it.
+
 - `find <words>` — list mapped pages whose path, title, or summary contains every word, with Notion links. Use it instead of reading `notion.config.json`.
-- `get <path>` — print a mapped page's Markdown.
-- `create <path> --parent <parent-path> --title <title> --emoji <emoji> [--summary <hook>]` — create and map a page. Container paths end in `/` (`wiki/<idea-slug>/`).
+- `get <path>` — print a page's Markdown, cache it, and record its version. Also takes the Notion ID or URL of an unmapped page.
+- `update <path> <file> [--force]` — replace a page from Markdown. It refuses when Notion changed since your last `get`; read again and merge rather than reach for `--force`. Notion rounds edit times to the minute, so an edit in the same minute as your `get` can slip through.
+- `create <path> --parent <parent-path> --title <title> --emoji <emoji> [--summary <hook>] [--file <file>]` — create and map a page, optionally with content. A rerun is safe: it reuses the mapped page, or adopts a same-titled child of the parent instead of creating a twin.
 - `describe <path> <summary>` — set the one-line hook that `index` and `find` show.
 - `index` — regenerate `wiki/index.md` from the mapping.
-- `update <path> <file>` — replace a mapped page from Markdown.
+- `query <database> [--filter <json>] [--sort "<property> desc"] [--limit N] [--json]` — list database rows as tab-separated values. Takes a mapped path or a database or data source ID or URL.
+- `add-row <database> --title <title> [--set Name=value ...] [--file <file>] [--new]` — add a row, or update the row that already has this title. Comma-separate multi-select, people, and relation values.
 - `toggle-details <path>` — convert plain `Details` H4 blocks to toggleable ones.
 - `seed` — ensure standard containers exist with expected titles/icons.
-- `pull-cache` — refresh `.cache/notion/` for grep and lint.
-- `hash` — compute content hashes for mapped pages.
+- `pull-cache` — re-read every mapped page into `.cache/notion/` for broad grep and lint. It costs one call per page, so it is not part of the ritual.
 - `ls` — list mapped paths and page IDs.
-- Use raw `ntn` only when the helper doesn't expose the operation.
+- Every call times out after 120 seconds (`NOTION_WIKI_TIMEOUT` overrides) and backs off on rate limits (HTTP 429).
+- Use raw `ntn` only when the helper doesn't expose the operation. From a script or agent shell, close stdin (`< /dev/null`): `ntn api` otherwise waits for a request body that never comes.

@@ -78,7 +78,6 @@ scripts/notion_wiki.py ls
 scripts/notion_wiki.py find <words>
 scripts/notion_wiki.py index
 scripts/notion_wiki.py pull-cache
-scripts/notion_wiki.py hash
 scripts/check_state.py
 ```
 

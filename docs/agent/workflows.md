@@ -37,7 +37,6 @@ python3 -m py_compile scripts/notion_wiki.py
 scripts/check_agent_symlinks.py
 scripts/check_state.py
 scripts/notion_wiki.py pull-cache
-scripts/notion_wiki.py hash
 ```
 
 Semantic lint via `/wiki-lint`: unsupported claims, unmarked synthesis, ambiguity drift, user-only premises, stale claims, risk/verdict mismatch, answered validations. Fix the wiki directly unless findings warrant a local lint note.
