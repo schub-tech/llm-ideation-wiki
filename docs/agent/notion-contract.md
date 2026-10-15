@@ -33,7 +33,7 @@ Container paths end in `/` (`wiki/<idea-slug>/`), but every command also accepts
 
 - `find <words>` — list mapped pages whose path, title, or summary contains every word, with Notion links. Use it instead of reading `notion.config.json`.
 - `get <path>` — print a page's Markdown, cache it, and record its version. Also takes the Notion ID or URL of an unmapped page.
-- `update <path> <file> [--force]` — replace a page from Markdown. It refuses when Notion changed since your last `get`; read again and merge rather than reach for `--force`. Notion rounds edit times to the minute, so an edit in the same minute as your `get` can slip through.
+- `update <path> <file> [--force]` — replace a page from Markdown. It refuses when Notion changed since your last `get`; read again and merge rather than reach for `--force`. Notion rounds edit times to the minute, so an edit in the same minute as your `get` can slip through. The record is shared by every session in this checkout: two parallel agent sessions editing the same page can still overwrite each other, so give each page one writer at a time.
 - `create <path> --parent <parent-path> --title <title> --emoji <emoji> [--summary <hook>] [--file <file>]` — create and map a page, optionally with content. A rerun is safe: it reuses the mapped page, or adopts a same-titled child of the parent instead of creating a twin.
 - `describe <path> <summary>` — set the one-line hook that `index` and `find` show.
 - `index` — regenerate `wiki/index.md` from the mapping.

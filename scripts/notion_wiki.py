@@ -235,16 +235,26 @@ def create_empty_page(parent_id: str, title: str) -> dict[str, Any]:
     return json.loads(output)
 
 
-def find_child_page(parent_id: str, title: str) -> str | None:
+def find_child_page(parent_id: str, title: str, skip: set[str]) -> str | None:
     for block in get_page_blocks(parent_id):
+        block_id = compact_id(str(block["id"]))
+        if block_id in skip:
+            continue
         if block.get("type") == "child_page" and block.get("child_page", {}).get("title") == title:
-            return compact_id(str(block["id"]))
+            return block_id
     return None
 
 
-def create_or_adopt_page(parent_id: str, title: str) -> tuple[str, bool]:
-    """Return (page id, created). A same-titled child left by an interrupted earlier run is adopted, not duplicated."""
-    existing = find_child_page(parent_id, title)
+def mapped_ids(config: dict[str, Any]) -> set[str]:
+    return {compact_id(str(entry["id"])) for entry in config["pages"].values() if entry.get("id")}
+
+
+def create_or_adopt_page(config: dict[str, Any], parent_id: str, title: str) -> tuple[str, bool]:
+    """Return (page id, created). A same-titled child left by an interrupted earlier run is adopted, not duplicated.
+
+    Only unmapped children are adopted: a page already mapped under another path keeps its own content.
+    """
+    existing = find_child_page(parent_id, title, mapped_ids(config))
     if existing:
         return existing, False
     return compact_id(str(create_empty_page(parent_id, title)["id"])), True
@@ -503,7 +513,7 @@ def ensure_page(config: dict[str, Any], path: str, parent_path: str) -> str:
 
     parent_id = config["root_page_id"] if not parent_path else page_id(config, parent_path)
     title = page_title(path)
-    new_id, created = create_or_adopt_page(parent_id, title)
+    new_id, created = create_or_adopt_page(config, parent_id, title)
     pages[path] = {
         "id": new_id,
         "title": title,
@@ -565,7 +575,7 @@ def page_target(config: dict[str, Any], value: str) -> tuple[str, str]:
     if not NOTION_ID.search(value.lower()):
         resolve_path(config, value)  # raises the unknown-path error
     target = notion_id(value)
-    return f"_unmapped/{target}.md", target
+    return f"_unmapped/{target}", target
 
 
 def read_markdown_file(name: str) -> str:
@@ -633,7 +643,7 @@ def cmd_create(args: argparse.Namespace) -> None:
         action = "updated mapping"
     else:
         parent_id = config["root_page_id"] if not parent else page_id(config, parent)
-        target, created = create_or_adopt_page(parent_id, title)
+        target, created = create_or_adopt_page(config, parent_id, title)
         pages[path] = {"id": target, "title": title, "parent": parent, "emoji": emoji}
         # Map the page before anything else can fail, so a rerun finds it instead of creating a twin.
         save_config(config)
