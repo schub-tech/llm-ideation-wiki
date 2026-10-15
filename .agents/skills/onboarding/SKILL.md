@@ -11,6 +11,8 @@ If the user has not already provided it, ask for the Notion page URL to use as t
 
 Do not proceed until you have the root page URL.
 
+**Fetch vendored skills.** Run `scripts/check_agent_symlinks.py`. If it reports a missing submodule, run `git submodule update --init` and re-run the check.
+
 **Set up Notion.**
 
 1. Read `README.md`, `AGENTS.md`, `docs/agent/notion-contract.md`, and `notion.config.json` if it exists.

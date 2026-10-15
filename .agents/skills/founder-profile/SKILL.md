@@ -5,10 +5,7 @@ description: Capture the founder's ambition, end-game, financial target, timefra
 
 Capture the founder profile that every later idea will be measured against. One Notion page, six questions, then a tension check.
 
-**Read first.**
-
-1. `hot.md`, `wiki/index.md`, `notion.config.json`.
-2. If `wiki/founder` already exists in `notion.config.json`, fetch it with `scripts/notion_wiki.py get wiki/founder` and offer to update rather than overwrite.
+**Read first.** If `scripts/notion_wiki.py find wiki/founder` returns a page, fetch it with `scripts/notion_wiki.py get wiki/founder` and offer to update rather than overwrite.
 
 **Ask one question at a time.** Wait for the answer before moving on — multi-question dumps let the user dodge the hard one. Reflect each answer back in one short line before asking the next, so the user can correct drift early.
 

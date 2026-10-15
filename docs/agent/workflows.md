@@ -14,7 +14,7 @@ Don't create ideas during onboarding, or before the founder profile exists, unle
 
 ## Ingest a raw source
 
-Read first: local `hot.md`, `wiki/index.md`, the relevant Notion `wiki/<idea-slug>/overview`, and related raw pages.
+Read first: the relevant Notion `wiki/<idea-slug>/overview` and related raw pages.
 
 1. **Analyze** before editing: material claims, entities, decisions, contradictions, affected pages, provenance state, open questions.
 2. **Write**: distill into the relevant `…/overview` and supporting child pages. Merge with existing synthesis; don't append duplicate summaries or create per-source summary pages.
@@ -23,7 +23,7 @@ Then run the ritual (`AGENTS.md` § Mechanics).
 
 ## Answer a question
 
-- Read `hot.md` and `wiki/index.md` first, then the relevant `…/overview` and raw sources. Use `pull-cache` when broad search beats targeted reads.
+- Read the relevant `…/overview` and raw sources. Use `pull-cache` when broad search beats targeted reads.
 - Name a shaky premise before answering. Cite pages and sources relied on. Surface contradictions; don't smooth them. Say so if the wiki doesn't answer it.
 - If the answer is durable, update the existing wiki page and run the ritual.
 
@@ -35,6 +35,7 @@ Deterministic checks:
 python3 -m json.tool notion.config.json >/dev/null
 python3 -m py_compile scripts/notion_wiki.py
 scripts/check_agent_symlinks.py
+scripts/check_state.py
 scripts/notion_wiki.py pull-cache
 scripts/notion_wiki.py hash
 ```

@@ -9,6 +9,6 @@ Walk down the design tree branch by branch, resolving dependencies between decis
 
 Ask one question at a time. Wait for the answer before moving on — multi-question dumps let the user dodge the hard one.
 
-For each question, provide your recommended answer grounded in what the wiki already says. If a question can be answered by reading the wiki, read it instead of asking. Start with `wiki/index.md`, then the relevant idea overview, then its deep-dive notes. Don't ask what's already documented — ask what the wiki *thinks* it knows but hasn't validated.
+For each question, provide your recommended answer grounded in what the wiki already says. If a question can be answered by reading the wiki, read it instead of asking. Start with the relevant idea overview, then its deep-dive notes. Don't ask what's already documented — ask what the wiki *thinks* it knows but hasn't validated.
 
 The goal is shared understanding, not theatrics. Surface shaky premises and hidden assumptions as the current branch demands — no manufactured objections, no padding.

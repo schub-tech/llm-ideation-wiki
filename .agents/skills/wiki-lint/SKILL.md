@@ -8,7 +8,7 @@ Run a semantic lint pass over the business-idea wiki. This complements the Notio
 **Start with deterministic checks.**
 
 1. Run the deterministic Notion helper checks from `docs/agent/workflows.md`.
-2. Read `hot.md`, `wiki/index.md`, and the relevant Notion idea page before reading deep-dive pages.
+2. Read the relevant Notion idea page before reading deep-dive pages.
 
 **Semantic checks.** For each idea, inspect the overview and its related deep-dive notes for:
 

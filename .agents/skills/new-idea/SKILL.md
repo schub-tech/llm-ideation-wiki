@@ -7,10 +7,9 @@ Create one new idea workspace in Notion.
 
 **Preflight.**
 
-1. Read `hot.md`, `wiki/index.md`, `notion.config.json`, `docs/agent/notion-contract.md`, and `templates/idea-page.md`.
-2. If `notion.config.json` has no `root_page_id`, stop and tell the user to run `/onboarding` first.
-3. If `wiki/` is missing from `notion.config.json`, run `scripts/notion_wiki.py seed --refresh-existing`.
-4. If `wiki/founder` is missing from `notion.config.json`, stop and tell the user to run `/founder-profile` first.
+1. Read `docs/agent/notion-contract.md` and `templates/idea-page.md`.
+2. Run `scripts/notion_wiki.py find wiki/`. If it reports no Notion root, stop and tell the user to run `/onboarding` first. If it finds no `wiki/` page, run `scripts/notion_wiki.py seed --refresh-existing`.
+3. If `scripts/notion_wiki.py find wiki/founder` finds nothing, stop and tell the user to run `/founder-profile` first.
 
 **Ask first.**
 
@@ -34,7 +33,7 @@ Use `scripts/notion_wiki.py create <path> --parent <parent-path> --title <title>
 
 **Finish.**
 
-1. Run the ritual (`AGENTS.md` § Mechanics), plus `scripts/notion_wiki.py ls`.
+1. Set the idea's index hook with `scripts/notion_wiki.py describe wiki/<idea-slug>/ "<one line>"`, then run the ritual (`AGENTS.md` § Mechanics).
 2. Tell the user where the idea lives and suggest `/grill-me` or `/find-gaps` as the next step.
 
 **Rules.**

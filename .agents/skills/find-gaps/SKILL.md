@@ -5,7 +5,7 @@ description: Surface research gaps in the wiki and propose a plan to fill them. 
 
 Convert the wiki's existing open questions into a concrete research plan. Don't invent new questions — start from what the idea overview already flags as unvalidated, then group, prioritize, and propose a strategy for each.
 
-**Read the wiki first.** Start with `wiki/index.md`, then the idea overview, then its deep-dive notes. Pull every "Still to validate" line, every "What we do not know" entry, and every numbered move under "Next moves." Skip questions the wiki already answers — those are noise.
+**Read the wiki first.** Start with the idea overview, then its deep-dive notes. Pull every "Still to validate" line, every "What we do not know" entry, and every numbered move under "Next moves." Skip questions the wiki already answers — those are noise.
 
 **Cluster each gap by research strategy:**
 

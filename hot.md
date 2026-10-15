@@ -1,23 +1,19 @@
----
-title: "Hot Cache"
-updated: ""
----
+# Hot
 
-# Hot Cache
+Current-state snapshot for the next agent session. Rewrite this file in full during the ritual. History goes to `wiki/log.md`, run detail goes to its own page or file, and this file links to it.
 
-Short recent-state cache for the next agent session. Read before broad repo scans.
+Caps: 5 KB in total, 300 characters per line, written for a cold reader. `scripts/check_state.py` enforces them.
 
-## Recent Activity
+## Now
 
-- Fresh distribution copy. No Notion root or idea content is configured yet.
+- Fresh distribution copy. No Notion root is configured yet.
 
-## Active Threads
+## Active threads
 
 - None.
 
-## Maintenance State
+## Next
 
 - Run `/onboarding` to connect a Notion root page.
 - Then run `/founder-profile` before creating ideas.
 - Use `/new-idea` to create the first idea.
-- Generated cache belongs under `.cache/notion/` and is not durable state.

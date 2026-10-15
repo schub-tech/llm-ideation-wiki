@@ -10,7 +10,7 @@ A Notion-based workspace for turning rough business ideas into structured, evide
 2. **Clone it to your computer:**
 
 ```bash
-git clone <your-repo-url>
+git clone --recurse-submodules <your-repo-url>
 cd llm-ideation-wiki
 ```
 
@@ -58,8 +58,11 @@ Notion is the place to read and edit user-facing content. Local Markdown files a
 - `/research-deep` — researches a specific question and writes the result as raw material.
 - `/grill-me` — interviews you to stress-test an idea.
 - `/wiki-lint` — checks for weak claims, missing evidence, stale assumptions, and unclear verdicts.
+- `/crisp-writing` — drafts outward-facing copy: outreach, emails, pitches, decks.
 
-Skills live in `.agents/skills/`. `CLAUDE.md` and the `.claude/skills/*/SKILL.md` files are compatibility symlinks for Claude-style agents.
+Skills live in `.agents/skills/`. `CLAUDE.md` and the `.claude/skills/*` entries are compatibility symlinks for Claude-style agents.
+
+`/crisp-writing` is vendored from [ThiloReintjes/skills](https://github.com/ThiloReintjes/skills) as a git submodule under `vendor/skills`, so that repo stays its single source of truth. If you cloned without `--recurse-submodules`, run `git submodule update --init`. To pull its latest version, run `git submodule update --remote vendor/skills` and commit the new pin.
 
 Agent instructions live in `AGENTS.md`, with detail in `docs/agent/`.
 
@@ -72,8 +75,11 @@ ntn doctor
 ntn login
 scripts/notion_wiki.py seed --refresh-existing
 scripts/notion_wiki.py ls
+scripts/notion_wiki.py find <words>
+scripts/notion_wiki.py index
 scripts/notion_wiki.py pull-cache
 scripts/notion_wiki.py hash
+scripts/check_state.py
 ```
 
 Highly inspired by Andrej Karpathy's [LLM Wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).

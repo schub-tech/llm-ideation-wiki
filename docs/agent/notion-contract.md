@@ -28,8 +28,11 @@ The Notion root mirrors the content tree:
 
 ## CLI (`scripts/notion_wiki.py`)
 
+- `find <words>` — list mapped pages whose path, title, or summary contains every word, with Notion links. Use it instead of reading `notion.config.json`.
 - `get <path>` — print a mapped page's Markdown.
-- `create <path> --parent <parent-path> --title <title> --emoji <emoji>` — create and map a page.
+- `create <path> --parent <parent-path> --title <title> --emoji <emoji> [--summary <hook>]` — create and map a page. Container paths end in `/` (`wiki/<idea-slug>/`).
+- `describe <path> <summary>` — set the one-line hook that `index` and `find` show.
+- `index` — regenerate `wiki/index.md` from the mapping.
 - `update <path> <file>` — replace a mapped page from Markdown.
 - `toggle-details <path>` — convert plain `Details` H4 blocks to toggleable ones.
 - `seed` — ensure standard containers exist with expected titles/icons.
