@@ -1,6 +1,6 @@
 ---
 name: new-idea
-description: Create a new idea workspace in the Notion-backed LLM Ideation Wiki. Use after onboarding and founder-profile, when the user wants to add the first idea, create another idea, or start working on a new business idea.
+description: Create a new idea workspace in the Notion-backed LLM Ideation Wiki. Use after onboarding, when the user wants to add the first idea, create another idea, or start working on a new business idea.
 ---
 
 Create one new idea workspace in Notion.
@@ -9,7 +9,7 @@ Create one new idea workspace in Notion.
 
 1. Read `docs/agent/notion-contract.md` and `templates/idea-page.md`.
 2. Run `scripts/notion_wiki.py find wiki/`. If it reports no Notion root, stop and tell the user to run `/onboarding` first. If it finds no `wiki/` page, run `scripts/notion_wiki.py seed --refresh-existing`.
-3. If `scripts/notion_wiki.py find wiki/founder` finds nothing, stop and tell the user to run `/founder-profile` first.
+3. If `scripts/notion_wiki.py find wiki/founder` finds nothing, ask the user for the founder's target (income, ambition, time frame) and record it in the overview's Team section. Suggest `/founder-profile` at the end; don't block on it.
 
 **Ask first.**
 
@@ -26,7 +26,7 @@ Do not proceed until you have the idea.
 5. Create `raw/<idea-slug>/founder-note` with the user's initial idea. Mark it as source material, not synthesis.
 6. Create `wiki/<idea-slug>/` under `Wiki` as the idea workspace container.
 7. Create `wiki/<idea-slug>/overview` from `templates/idea-page.md`.
-8. Fill only what the initial idea and `wiki/founder` support. Mark founder claims as `^[user-claim]`, inferred synthesis as `^[inferred]`, and uncertain claims as `^[ambiguous]`.
+8. Fill only what the initial idea and the founder's frame support. Mark founder claims as `^[user-claim]`, inferred synthesis as `^[inferred]`, and uncertain claims as `^[ambiguous]`.
 9. Set an emoji on every Notion page.
 
 Use `scripts/notion_wiki.py create <path> --parent <parent-path> --title <title> --emoji <emoji> --file <file>` for new mapped pages and `scripts/notion_wiki.py update <path> <file>` for durable writes.

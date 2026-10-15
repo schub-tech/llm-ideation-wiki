@@ -7,10 +7,10 @@ Step sequences for setup, ingest, answering, lint, and sync. Commands: see [noti
 Three separate skills, in order:
 
 1. `/onboarding` — connect the Notion root; seed empty `Raw`, `Wiki`, `Templates`.
-2. `/founder-profile` — create `wiki/founder`.
-3. `/new-idea` — create one idea workspace and initial overview.
+2. `/founder-profile` — create `wiki/founder`. Recommended before the first idea, not required.
+3. `/new-idea` — create one idea workspace and initial overview. Without a founder profile, it asks for the founder's target and records it in the overview's Team section.
 
-Don't create ideas during onboarding, or before the founder profile exists, unless the user changes the project rules.
+Don't create ideas during onboarding.
 
 ## Ingest a raw source
 

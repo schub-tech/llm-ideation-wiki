@@ -26,7 +26,7 @@ Keep evidence and synthesis distinguishable next to the claim.
 ## Idea pages
 
 - Verdicts are binary: `active` or `killed`.
-- Run `/founder-profile` before the first idea so pages have a founder decision frame.
+- Pages judge an idea against the founder's frame. Take it from `wiki/founder` when it exists; otherwise ask for the founder's target and record it in the overview's Team section.
 - Use `templates/idea-page.md` as the `…/overview` scaffold; push detailed evidence into sibling deep-dive pages, not the overview.
 - Each `Details` heading is a toggleable H4 so section leads stay scannable. `create`/`update` auto-convert `#### Details` on `*/overview` and `templates/idea-page` paths — don't write raw Notion toggle syntax.
 
