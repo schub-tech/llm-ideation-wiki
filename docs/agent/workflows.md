@@ -41,6 +41,21 @@ scripts/notion_wiki.py pull-cache
 
 Semantic lint via `/wiki-lint`: unsupported claims, unmarked synthesis, ambiguity drift, user-only premises, stale claims, risk/verdict mismatch, answered validations. Fix the wiki directly unless findings warrant a local lint note.
 
+## Long runs
+
+A long run is any job that spans many tool calls or sessions: a `/goal` run, a batch of research, a sourcing sweep.
+
+1. Create `runs/<YYYY-MM-DD>-<slug>/` with three files:
+   - `brief.md` — copied from [goal-brief](../../templates/goal-brief.md): objective, scope, and stop rule.
+   - `progress.json` — machine-readable counters, rewritten after every batch.
+   - `receipt.md` — written when the run stops: what was produced, where it lives, why it stopped.
+2. Every brief names one stop rule with three parts. The run stops at whichever comes first:
+   - **Target** — a ceiling, not a quota. Reaching it ends the run; falling short is fine.
+   - **Budget** — the most time, calls, or money the run may spend.
+   - **Quality floor** — the bar each item must clear. When new items stop clearing it, stop.
+3. `hot.md` gets one pointer line per active run: its folder, status, and next step. Detail stays in the run folder.
+4. When the run stops, write `receipt.md`, update the durable wiki pages, and replace the `hot.md` pointer with the outcome.
+
 ## Sync from outside the vault
 
 Treat like ingest, but import only what's worth remembering. Skip raw implementation detail unless it's the actual lesson.

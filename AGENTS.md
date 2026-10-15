@@ -40,4 +40,5 @@ Write every file and message for a **cold reader**: a person or agent with no co
 - Creating, mapping, or restructuring Notion pages, or any helper command beyond `find`/`get`/`update`: [notion-contract](./docs/agent/notion-contract.md).
 - Wiki schema, provenance markers, page writing: [wiki-contract](./docs/agent/wiki-contract.md). Ingest, answer, lint, sync steps: [workflows](./docs/agent/workflows.md).
 - New idea scaffold: [idea-page](./templates/idea-page.md). Interview cheat-sheet: [mom-test](./docs/mom-test-cheatsheet.md).
+- Long runs (`/goal`, batch research, anything over one session): set up `runs/<date>-<slug>/` first, per [workflows](./docs/agent/workflows.md) § Long runs.
 - Skills in `.agents/skills/`: `/onboarding`, `/founder-profile`, `/new-idea`, `/find-gaps`, `/research-deep`, `/grill-me`, `/wiki-lint`, `/crisp-writing` (vendored in `vendor/skills`).

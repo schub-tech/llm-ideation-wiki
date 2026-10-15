@@ -12,8 +12,14 @@ Caps: 5 KB in total, 300 characters per line, written for a cold reader. `script
 
 - None.
 
+## Long runs
+
+One line per active run: its `runs/` folder, status, and next step. See `docs/agent/workflows.md` § Long runs.
+
+- None.
+
 ## Next
 
 - Run `/onboarding` to connect a Notion root page.
-- Then run `/founder-profile` before creating ideas.
+- Then run `/founder-profile`, which gives every idea a founder frame to be judged against.
 - Use `/new-idea` to create the first idea.
