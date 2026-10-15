@@ -193,6 +193,8 @@ def template_content(path: str, source: Path) -> str:
     text = source.read_text(encoding="utf-8")
     match = re.search(r"````markdown\n(.*?)\n````", text, flags=re.DOTALL)
     body = match.group(1).strip() if match else text.strip()
+    # Comment-only lines are notes for the repo (such as fork markers); Notion would show them as text.
+    body = re.sub(r"^[ \t]*<!--.*?-->[ \t]*\n", "", body, flags=re.MULTILINE)
 
     if body.startswith("---\n"):
         _, _, remainder = body.partition("\n---\n")
